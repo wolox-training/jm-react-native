@@ -1,18 +1,20 @@
 import React from 'react';
-import { View } from 'react-native';
+import { FlatList } from 'react-native';
 import BookCard from '@components/book-card';
+import { BOOKS } from '@constants/mockData';
 
 import styles from './styles';
 
 function BookList() {
   return (
-    <View style={styles.bookList}>
-      <BookCard
-        title="Scavenger Hunt"
-        author="Christopher Pike"
-        coverImageURI="http://wolox-training.s3.amazonaws.com/uploads/6963511-M.jpg"
-      />
-    </View>
+    <FlatList
+      data={BOOKS}
+      renderItem={({ title, author, imageURL }) => (
+        <BookCard title={title} author={author} coverImageURI={imageURL} />
+      )}
+      keyExtractor={({ id }) => String(id)}
+      style={styles.bookList}
+    />
   );
 }
 
