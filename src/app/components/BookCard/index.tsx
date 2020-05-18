@@ -5,11 +5,11 @@ import styles from './styles';
 
 interface Props {
   title: string;
-  author?: string;
+  author: string;
   coverImageURI: string;
 }
 
-function BookCard({ title, author = 'Anonymous', coverImageURI }: Props) {
+function BookCard({ title, author, coverImageURI }: Props) {
   return (
     <View style={styles.book}>
       <Image source={{ uri: coverImageURI }} style={styles.bookCover} />

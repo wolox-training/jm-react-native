@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 
-import BookList from './views/book-list';
+import BookList from './screens/BookList';
 import styles from './styles';
 
 const App = () => {
