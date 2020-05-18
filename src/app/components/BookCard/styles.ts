@@ -1,8 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { white, gray, black } from '@constants/colors';
 
-// 0 1px 1px 0 rgba(0,0,0,0.05);
-
 export default StyleSheet.create({
   book: {
     paddingVertical: 16,

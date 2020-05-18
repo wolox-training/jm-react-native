@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import BookCard from '@app/components/BookCard';
+import BookCard from '@components/BookCard';
 
 import styles from './styles';
 
