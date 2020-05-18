@@ -1,4 +1,6 @@
-export const BOOKS = [
+import { Book } from '@interfaces/book';
+
+export const BOOKS: Book[] = [
   {
     id: 3,
     author: 'Lois Duncan',
@@ -18,18 +20,9 @@ export const BOOKS = [
     imageURL: 'http://wolox-training.s3.amazonaws.com/uploads/6963511-M.jpg'
   },
   {
-    id: 5,
-    author: 'Christopher Pike',
-    title: 'Scavenger Hunt',
-    genre: 'suspense',
-    publisher: 'Pocket Books',
-    year: '1989',
-    imageURL: 'http://wolox-training.s3.amazonaws.com/uploads/6963511-M.jpg'
-  },
-  {
     id: 6,
     author: 'Paula Hawkins',
-    title: 'The Girl on the Train\n',
+    title: 'The Girl on the Train',
     genre: 'suspense',
     publisher: 'Riverhead Books',
     year: '2015',

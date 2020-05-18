@@ -6,7 +6,6 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 16,
-    alignItems: 'center',
     backgroundColor: lightBlue
   }
 });
