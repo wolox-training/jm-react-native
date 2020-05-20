@@ -1,5 +1,13 @@
 /* eslint-disable camelcase */
 import { Book } from '@interfaces/book';
+import { CamelcaseSerializer } from 'cerealizr';
+
+const bookSerealizer = new CamelcaseSerializer({
+  descriptor: {
+    title: (value: string) => value.trim()
+  },
+  mapAllValues: true
+});
 
 const booksReponse = [
   {
@@ -86,4 +94,4 @@ const booksReponse = [
   }
 ];
 
-export const BOOKS: Book[] = booksReponse.map(({ image_url, ...book }) => ({ ...book, imageUrl: image_url }));
+export const BOOKS: Book[] = booksReponse.map(book => bookSerealizer.serialize(book));
