@@ -5,8 +5,7 @@ export default StyleSheet.create({
   bookDetail: {
     paddingHorizontal: 20,
     paddingTop: 30,
-    backgroundColor: lightBlue,
-    flex: 1
+    backgroundColor: lightBlue
   },
   bookDetailInside: {
     backgroundColor: white,

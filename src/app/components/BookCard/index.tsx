@@ -16,8 +16,10 @@ function BookCard({ id, title, author, imageUrl }: Props) {
   return (
     <TouchableOpacity style={styles.book} onPress={() => navigation.push(Routes.BookDetail, { bookId: id })}>
       <Image source={imageUrl ? { uri: imageUrl } : bookPlaceholderCover} style={styles.bookCover} />
-      <View>
-        <Text style={styles.bookTitle}>{title}</Text>
+      <View style={styles.bookSummary}>
+        <Text numberOfLines={2} style={styles.bookTitle}>
+          {title}
+        </Text>
         <Text style={styles.bookAuthor}>{author}</Text>
       </View>
     </TouchableOpacity>

@@ -4,6 +4,7 @@ import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '@interfaces/navigation';
 import Routes from '@constants/routes';
 import { BOOKS } from '@constants/mockData';
+import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
 
 import styles from './styles';
 
@@ -19,12 +20,11 @@ function BookDetail({ route }: Props) {
     <View style={styles.bookDetail}>
       <View style={styles.bookDetailInside}>
         <View style={styles.bookInfo}>
-          <Image
-            source={imageUrl ? { uri: imageUrl } : require('@assets/book_placeholder_cover.png')}
-            style={styles.bookCover}
-          />
+          <Image source={imageUrl ? { uri: imageUrl } : bookPlaceholderCover} style={styles.bookCover} />
           <View style={styles.bookSummary}>
-            <Text style={styles.bookTitle}>{title}</Text>
+            <Text numberOfLines={2} style={styles.bookTitle}>
+              {title}
+            </Text>
             <Text style={styles.bookStatus}>Not Available</Text>
             <Text style={styles.bookBasicAttribute}>{author}</Text>
             <Text style={styles.bookBasicAttribute}>{year}</Text>
