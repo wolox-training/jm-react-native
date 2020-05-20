@@ -2,13 +2,6 @@
 import { Book } from '@interfaces/book';
 import { CamelcaseSerializer } from 'cerealizr';
 
-const bookSerealizer = new CamelcaseSerializer({
-  descriptor: {
-    title: (value: string) => value.trim()
-  },
-  mapAllValues: true
-});
-
 const booksReponse = [
   {
     id: 1,
@@ -93,5 +86,12 @@ const booksReponse = [
     image_url: 'http://wolox-training.s3.amazonaws.com/uploads/41DNuJfahyL._SX322_BO1_204_203_200_.jpg'
   }
 ];
+
+const bookSerealizer = new CamelcaseSerializer({
+  descriptor: {
+    title: (value: string) => value.trim()
+  },
+  mapAllValues: true
+});
 
 export const BOOKS: Book[] = booksReponse.map(book => bookSerealizer.serialize(book));
