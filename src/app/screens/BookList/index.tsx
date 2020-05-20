@@ -6,16 +6,15 @@ import { Book } from '@interfaces/book';
 
 import styles from './styles';
 
-const renderBook: ListRenderItem<Book> = ({ item: { title, author, imageURL } }) => (
-  <BookCard title={title} author={author} coverImageURI={imageURL} />
-);
+export const keyExtractor = ({ id }: Book) => String(id);
+export const renderBook: ListRenderItem<Book> = ({ item }) => <BookCard bookData={item} />;
 
 function BookList() {
   return (
-    <FlatList
+    <FlatList<Book>
       data={BOOKS}
       renderItem={renderBook}
-      keyExtractor={({ id }) => String(id)}
+      keyExtractor={keyExtractor}
       style={styles.bookList}
     />
   );

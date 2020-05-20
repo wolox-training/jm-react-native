@@ -1,6 +1,25 @@
+/* eslint-disable camelcase */
 import { Book } from '@interfaces/book';
 
-export const BOOKS: Book[] = [
+const booksReponse = [
+  {
+    id: 1,
+    author: 'Emmie Thiel',
+    title: 'Ring of Bright Water',
+    genre: 'Short story',
+    publisher: 'Butterworth-Heinemann',
+    year: '1968',
+    image_url: null
+  },
+  {
+    id: 2,
+    author: 'Christopher Pike',
+    title: 'Scavenger Hunt',
+    genre: 'other',
+    publisher: 'Pocket Books',
+    year: '1989',
+    image_url: null
+  },
   {
     id: 3,
     author: 'Lois Duncan',
@@ -8,7 +27,7 @@ export const BOOKS: Book[] = [
     genre: 'suspense',
     publisher: 'Little, Brown',
     year: '1985',
-    imageURL: 'http://wolox-training.s3.amazonaws.com/uploads/6942334-M.jpg'
+    image_url: 'http://wolox-training.s3.amazonaws.com/uploads/6942334-M.jpg'
   },
   {
     id: 4,
@@ -17,16 +36,25 @@ export const BOOKS: Book[] = [
     genre: 'suspense',
     publisher: 'Pocket Books',
     year: '1989',
-    imageURL: 'http://wolox-training.s3.amazonaws.com/uploads/6963511-M.jpg'
+    image_url: 'http://wolox-training.s3.amazonaws.com/uploads/6963511-M.jpg'
+  },
+  {
+    id: 5,
+    author: 'Christopher Pike',
+    title: 'Scavenger Hunt',
+    genre: 'suspense',
+    publisher: 'Pocket Books',
+    year: '1989',
+    image_url: 'http://wolox-training.s3.amazonaws.com/uploads/6963511-M.jpg'
   },
   {
     id: 6,
     author: 'Paula Hawkins',
-    title: 'The Girl on the Train',
+    title: 'The Girl on the Train\n',
     genre: 'suspense',
     publisher: 'Riverhead Books',
     year: '2015',
-    imageURL: 'http://wolox-training.s3.amazonaws.com/uploads/content.jpeg'
+    image_url: 'http://wolox-training.s3.amazonaws.com/uploads/content.jpeg'
   },
   {
     id: 7,
@@ -35,7 +63,7 @@ export const BOOKS: Book[] = [
     genre: 'suspense',
     publisher: 'Scribner',
     year: '2014',
-    imageURL: 'http://wolox-training.s3.amazonaws.com/uploads/content.jpeg'
+    image_url: 'http://wolox-training.s3.amazonaws.com/uploads/content.jpeg'
   },
   {
     id: 8,
@@ -44,7 +72,7 @@ export const BOOKS: Book[] = [
     genre: 'thriller',
     publisher: 'Ballantine Books',
     year: '2003',
-    imageURL:
+    image_url:
       'http://wolox-training.s3.amazonaws.com/uploads/el-psicoanalista-analyst-john-katzenbach-paperback-cover-art.jpg'
   },
   {
@@ -54,6 +82,8 @@ export const BOOKS: Book[] = [
     genre: 'fiction',
     publisher: 'Crown Publishing Group',
     year: '2011',
-    imageURL: 'http://wolox-training.s3.amazonaws.com/uploads/41DNuJfahyL._SX322_BO1_204_203_200_.jpg'
+    image_url: 'http://wolox-training.s3.amazonaws.com/uploads/41DNuJfahyL._SX322_BO1_204_203_200_.jpg'
   }
 ];
+
+export const BOOKS: Book[] = booksReponse.map(({ image_url, ...book }) => ({ ...book, imageUrl: image_url }));
