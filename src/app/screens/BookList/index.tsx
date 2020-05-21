@@ -6,10 +6,9 @@ import { Book } from '@interfaces/book';
 
 import styles from './styles';
 
-export const keyExtractor = ({ id }: Book) => String(id);
-export const renderBook: ListRenderItem<Book> = ({ item }) => <BookCard bookData={item} />;
-
 function BookList() {
+  const keyExtractor = ({ id }: Book) => String(id);
+  const renderBook: ListRenderItem<Book> = ({ item }) => <BookCard {...item} />;
   return (
     <FlatList<Book>
       data={BOOKS}

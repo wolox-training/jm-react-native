@@ -5,11 +5,9 @@ import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
 
 import styles from './styles';
 
-interface Props {
-  bookData: Book;
-}
+interface Props extends Book {}
 
-function BookCard({ bookData: { title, author, imageUrl } }: Props) {
+function BookCard({ title, author, imageUrl }: Props) {
   return (
     <View style={styles.book}>
       <Image source={imageUrl ? { uri: imageUrl } : bookPlaceholderCover} style={styles.bookCover} />
