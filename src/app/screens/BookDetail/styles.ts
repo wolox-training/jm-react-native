@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native';
 import { white, gray, lightBlue, blue, lightGray, red } from '@constants/colors';
 
 export default StyleSheet.create({
+  scrollContent: { flexGrow: 1 },
   bookDetail: {
-    paddingHorizontal: 20,
-    paddingTop: 30,
+    padding: 20,
     backgroundColor: lightBlue,
-    flex: 1
+    flexGrow: 1
   },
   bookDetailInside: {
     backgroundColor: white,

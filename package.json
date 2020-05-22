@@ -12,7 +12,7 @@
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint-fix": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
     "lint-diff": "git diff --name-only --cached --relative | grep -E \"\\.(ts|tsx|js|jsx)$\" | xargs eslint",
-    "tsc": "tsc"
+    "check-types": "tsc"
   },
   "dependencies": {
     "cerealizr": "^1.0.1-alpha",
@@ -73,7 +73,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run lint-diff && yarn run tsc"
+      "pre-commit": "yarn run lint-diff && yarn run check-types"
     }
   }
 }

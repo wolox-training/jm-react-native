@@ -1,6 +1,5 @@
 import React from 'react';
-import { ListRenderItem, View, TouchableOpacity, Text } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { View, TouchableOpacity, Text } from 'react-native';
 import CommentCard from '@app/components/CommentCard';
 import { Comment } from '@interfaces/comment';
 import { COMMENTS } from '@constants/mockData';
@@ -8,11 +7,10 @@ import { COMMENTS } from '@constants/mockData';
 import styles from './styles';
 
 function CommentList() {
-  const keyExtractor = ({ id }: Comment) => String(id);
-  const renderComment: ListRenderItem<Comment> = ({ item }) => <CommentCard {...item} />;
+  const renderComment = (comment: Comment) => <CommentCard key={comment.id} {...comment} />;
   return (
     <View style={styles.commentSection}>
-      <FlatList<Comment> data={COMMENTS} renderItem={renderComment} keyExtractor={keyExtractor} />
+      <View>{COMMENTS.map(renderComment)}</View>
       <TouchableOpacity style={styles.viewAllButton}>
         <Text style={styles.viewAllButtonText}>View All</Text>
       </TouchableOpacity>
