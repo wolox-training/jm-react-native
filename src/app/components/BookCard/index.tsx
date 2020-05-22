@@ -13,8 +13,9 @@ interface Props extends Book {}
 
 function BookCard({ id, title, author, imageUrl }: Props) {
   const navigation: StackNavigationProp<RootStackParamList, Routes.Library> = useNavigation();
+  const handlePress = () => navigation.navigate(Routes.BookDetail, { bookId: id });
   return (
-    <TouchableOpacity style={styles.book} onPress={() => navigation.push(Routes.BookDetail, { bookId: id })}>
+    <TouchableOpacity style={styles.book} onPress={handlePress}>
       <Image source={imageUrl ? { uri: imageUrl } : bookPlaceholderCover} style={styles.bookCover} />
       <View style={styles.bookSummary}>
         <Text numberOfLines={2} style={styles.bookTitle}>
