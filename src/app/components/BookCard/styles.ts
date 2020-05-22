@@ -16,7 +16,8 @@ export default StyleSheet.create({
       height: 1
     },
     shadowRadius: 1,
-    elevation: 1
+    elevation: 1,
+    marginBottom: 12
   },
   bookCover: {
     marginRight: 12,
