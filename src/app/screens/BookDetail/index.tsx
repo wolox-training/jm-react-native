@@ -5,6 +5,7 @@ import { RootStackParamList } from '@interfaces/navigation';
 import Routes from '@constants/routes';
 import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
 
+import CommentList from './components/CommentList';
 import styles from './styles';
 
 interface Props {
@@ -37,6 +38,7 @@ function BookDetail({ route }: Props) {
           </TouchableOpacity>
         </View>
       </View>
+      <CommentList />
     </View>
   );
 }

@@ -5,14 +5,16 @@ export default StyleSheet.create({
   bookDetail: {
     paddingHorizontal: 20,
     paddingTop: 30,
-    backgroundColor: lightBlue
+    backgroundColor: lightBlue,
+    flex: 1
   },
   bookDetailInside: {
     backgroundColor: white,
     paddingHorizontal: 30,
     paddingVertical: 20,
     borderRadius: 5,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 10
   },
   bookInfo: {
     flexDirection: 'row',
