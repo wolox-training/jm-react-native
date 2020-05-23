@@ -11,6 +11,7 @@ module.exports = {
           '@app': './src/app',
           '@assets': './src/app/assets',
           '@components': './src/app/components',
+          '@screens': './src/app/screens',
           '@config': './src/config',
           '@constants': './src/constants',
           '@interfaces': './src/interfaces',
