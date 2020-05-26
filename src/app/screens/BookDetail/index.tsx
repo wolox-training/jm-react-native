@@ -3,7 +3,6 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '@interfaces/navigation';
 import Routes from '@constants/routes';
-import { BOOKS } from '@constants/mockData';
 import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
 
 import styles from './styles';
@@ -13,9 +12,7 @@ interface Props {
 }
 
 function BookDetail({ route }: Props) {
-  const selectedBook = BOOKS.find(({ id }) => id === route.params.bookId);
-  const { imageUrl, title, author, year, genre } = selectedBook!;
-
+  const { imageUrl, title, author, year, genre } = route.params.book;
   return (
     <View style={styles.bookDetail}>
       <View style={styles.bookDetailInside}>
