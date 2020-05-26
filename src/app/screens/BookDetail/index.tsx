@@ -1,10 +1,9 @@
 import React from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '@interfaces/navigation';
 import Routes from '@constants/routes';
 import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
-import { ScrollView } from 'react-native-gesture-handler';
 
 import CommentList from './components/CommentList';
 import styles from './styles';
