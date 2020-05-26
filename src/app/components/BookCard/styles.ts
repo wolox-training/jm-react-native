@@ -17,7 +17,11 @@ export default StyleSheet.create({
     },
     shadowRadius: 1,
     elevation: 1,
-    marginBottom: 12
+    marginBottom: 12,
+    flex: 1
+  },
+  bookSummary: {
+    flex: 1
   },
   bookCover: {
     marginRight: 12,
