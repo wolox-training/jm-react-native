@@ -112,5 +112,25 @@ export const COMMENTS: Comment[] = [
     author: 'Susan Collins',
     avatar: avatar2,
     content: 'Let’s definitely get that coffe It was great to see you again earlier.'
+  },
+  {
+    id: 3,
+    avatar: avatar1,
+    author: 'John Appleseed',
+    content:
+      'It was great to see you again earlier. Let’s definitely get that coffe It was great to see you again earlier.'
+  },
+  {
+    id: 4,
+    author: 'Susan Collins',
+    avatar: avatar2,
+    content: 'Let’s definitely get that coffe It was great to see you again earlier.'
+  },
+  {
+    id: 5,
+    avatar: avatar1,
+    author: 'John Appleseed',
+    content:
+      'It was great to see you again earlier. Let’s definitely get that coffe It was great to see you again earlier.'
   }
 ];
