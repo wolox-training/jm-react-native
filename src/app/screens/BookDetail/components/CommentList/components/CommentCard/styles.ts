@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { black2, gray } from '@constants/colors';
+import { MEDIUM_FONT } from '@constants/styleHelpers';
 
 const AVATAR_SIZE = 45;
 
@@ -19,9 +20,8 @@ export default StyleSheet.create({
     marginBottom: 8
   },
   commentContent: {
-    color: gray,
-    fontSize: 16,
-    lineHeight: 20
+    ...MEDIUM_FONT,
+    color: gray
   },
   avatar: {
     width: AVATAR_SIZE,
