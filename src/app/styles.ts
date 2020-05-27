@@ -1,16 +1,16 @@
 import { StyleSheet } from 'react-native';
 import { white, lightBlue } from '@constants/colors';
+import { MEDIUM_FONT } from '@constants/styleHelpers';
 
 export default StyleSheet.create({
   header: {
     height: 100
   },
   headerTitle: {
+    ...MEDIUM_FONT,
     color: white,
     fontWeight: '600',
-    letterSpacing: -0.4,
-    fontSize: 16,
-    lineHeight: 24
+    letterSpacing: -0.4
   },
   goBackButton: {
     width: 20,
