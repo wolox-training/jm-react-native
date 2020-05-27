@@ -7,7 +7,7 @@ import styles from './styles';
 
 function BookDetail() {
   return (
-    <ScrollView contentContainerStyle={styles.bookDetail}>
+    <ScrollView style={styles.bookDetail} contentContainerStyle={styles.bookDetailInside}>
       <BookInfo />
       <CommentList />
     </ScrollView>
