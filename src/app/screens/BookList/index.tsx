@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, ListRenderItem } from 'react-native';
-import BookCard from '@components/BookCard';
+import BookCard from '@app/screens/BookList/components/BookCard';
 import { BOOKS } from '@constants/mockData';
 import { Book } from '@interfaces/book';
 

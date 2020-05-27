@@ -1,22 +1,16 @@
 import { StyleSheet } from 'react-native';
-import { white, gray, black } from '@constants/colors';
+import { white, gray } from '@constants/colors';
+import { SHADOW } from '@constants/styleHelpers';
 
 export default StyleSheet.create({
   book: {
+    ...SHADOW,
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 5,
     flexDirection: 'row',
     backgroundColor: white,
     width: '100%',
-    shadowColor: black,
-    shadowOpacity: 0.05,
-    shadowOffset: {
-      width: 0,
-      height: 1
-    },
-    shadowRadius: 1,
-    elevation: 1,
     marginBottom: 12,
     flex: 1
   },
