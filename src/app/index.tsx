@@ -1,22 +1,26 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { RootStackParamList } from '@interfaces/navigation';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Routes from '@constants/routes';
-import { stackNavigatorConfig } from '@config/navigation';
+import { tabNavigatorConfig } from '@config/navigation';
+import { RootTabParamList } from '@interfaces/navigation';
 
-import BookDetail from './screens/BookDetail';
-import BookList from './screens/BookList';
+import LibraryNavigator from './components/LibraryNavigator';
+import Wishlist from './components/Wishlist';
+import TabBarIcon from './components/TabBarIcon';
 
-const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
+const { Navigator, Screen } = createBottomTabNavigator<RootTabParamList>();
 
 function App() {
   return (
     <NavigationContainer>
-      <Navigator initialRouteName={Routes.Library} screenOptions={stackNavigatorConfig}>
-        <Screen name={Routes.Library} component={BookList} options={{ title: 'LIBRARY' }} />
-        <Screen name={Routes.BookDetail} component={BookDetail} options={{ title: 'BOOK DETAIL' }} />
+      <Navigator
+        initialRouteName={Routes.Library}
+        screenOptions={{ tabBarIcon: TabBarIcon }}
+        tabBarOptions={tabNavigatorConfig}>
+        <Screen name={Routes.Library} component={LibraryNavigator} />
+        <Screen name={Routes.Wishlist} component={Wishlist} />
       </Navigator>
     </NavigationContainer>
   );
