@@ -1,13 +1,12 @@
 import { StyleSheet } from 'react-native';
 import { white, lightBlue } from '@constants/colors';
-import { MEDIUM_FONT } from '@constants/styleHelpers';
 
 export default StyleSheet.create({
   header: {
     height: 100
   },
   headerTitle: {
-    ...MEDIUM_FONT,
+    fontSize: 16,
     color: white,
     fontWeight: '600',
     letterSpacing: -0.4
