@@ -14,7 +14,7 @@ import styles from './styles';
 
 const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
 
-function AppNavigator() {
+function App() {
   const stackNavigatorConfig = {
     headerTitleStyle: styles.headerTitle,
     headerStyle: styles.header,
@@ -32,4 +32,4 @@ function AppNavigator() {
   );
 }
 
-export default AppNavigator;
+export default App;
