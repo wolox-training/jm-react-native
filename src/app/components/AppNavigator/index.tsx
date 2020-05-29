@@ -5,8 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Routes from '@constants/routes';
 import { tabNavigatorConfig, stackNavigatorConfig } from '@config/navigation';
 import { RootTabParamList, RootStackParamList } from '@interfaces/navigation';
-import BookList from '@app/screens/BookList';
-import BookDetail from '@app/screens/BookDetail';
+import BookList from '@screens/BookList';
+import BookDetail from '@screens/BookDetail';
 import Wishlist from '@components/Wishlist';
 import TabBarIcon from '@components/TabBarIcon';
 
