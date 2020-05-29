@@ -4,20 +4,9 @@ import Routes from '@constants/routes';
 import BookList from '@app/screens/BookList';
 import BookDetail from '@app/screens/BookDetail';
 import { RootStackParamList } from '@interfaces/navigation';
-import { Image } from 'react-native';
-import goBackIcon from '@assets/ic_back.png';
-import headerBackground from '@assets/bc_navbar.png';
-
-import styles from './styles';
+import { stackNavigatorConfig } from '@config/navigation';
 
 function LibraryNavigator() {
-  const stackNavigatorConfig = {
-    headerTitleStyle: styles.headerTitle,
-    headerStyle: styles.header,
-    headerBackTitleVisible: false,
-    headerBackground: () => <Image source={headerBackground} style={styles.headerBackground} />,
-    headerBackImage: () => <Image source={goBackIcon} style={styles.goBackButton} />
-  };
   const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
   return (
     <Navigator initialRouteName={Routes.BookList} screenOptions={stackNavigatorConfig}>
