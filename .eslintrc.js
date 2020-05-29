@@ -6,7 +6,7 @@ module.exports = {
     'no-magic-numbers': 'off',
     'new-cap': 'off',
     'comma-dangle': 'off',
-    'import/order': ['error', { 'newlines-between': 'always' }]
+    'import/order': ['error', { 'newlines-between': 'always' }],
   },
   settings: {
     'import/ignore': ['node_modules'],
