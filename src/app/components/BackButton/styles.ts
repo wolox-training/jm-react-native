@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
+import { SQUARE_NARROW } from '@constants/styleHelpers';
 
 export default StyleSheet.create({
   backButton: {
-    width: 20,
-    height: 20,
+    ...SQUARE_NARROW,
     marginLeft: 12
   }
 });

@@ -2,8 +2,7 @@ import React from 'react';
 import { useRoute } from '@react-navigation/native';
 import { Image } from 'react-native';
 import { TabNavigatorIcons } from '@constants/routes';
-
-import styles from './styles';
+import { SQUARE_NARROW } from '@constants/styleHelpers';
 
 interface Props {
   focused: boolean;
@@ -12,10 +11,7 @@ interface Props {
 function TabBarIcon({ focused }: Props) {
   const route = useRoute();
   return (
-    <Image
-      source={TabNavigatorIcons[route.name][focused ? 'active' : 'inactive']}
-      style={styles.tabBarIcon}
-    />
+    <Image source={TabNavigatorIcons[route.name][focused ? 'active' : 'inactive']} style={SQUARE_NARROW} />
   );
 }
 

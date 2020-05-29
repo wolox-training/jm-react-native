@@ -15,3 +15,8 @@ export const MEDIUM_FONT = {
   fontSize: 16,
   lineHeight: 20
 };
+
+export const SQUARE_NARROW = {
+  width: 20,
+  height: 20
+};
