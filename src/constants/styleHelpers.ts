@@ -10,3 +10,8 @@ export const SHADOW = {
   shadowRadius: 1,
   elevation: 1
 };
+
+export const MEDIUM_FONT = {
+  fontSize: 16,
+  lineHeight: 20
+};

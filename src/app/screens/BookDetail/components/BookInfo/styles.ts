@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { white, gray, blue, lightGray, red } from '@constants/colors';
-import { SHADOW } from '@constants/styleHelpers';
+import { SHADOW, MEDIUM_FONT } from '@constants/styleHelpers';
 
 export default StyleSheet.create({
   bookInfo: {
@@ -31,14 +31,12 @@ export default StyleSheet.create({
     color: gray
   },
   bookStatus: {
+    ...MEDIUM_FONT,
     color: red,
-    fontWeight: 'bold',
-    fontSize: 16,
-    lineHeight: 20
+    fontWeight: 'bold'
   },
   bookBasicAttribute: {
-    fontSize: 16,
-    lineHeight: 20,
+    ...MEDIUM_FONT,
     color: gray,
     textTransform: 'capitalize'
   },

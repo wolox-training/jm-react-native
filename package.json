@@ -11,7 +11,7 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
     "lint-fix": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
-    "lint-diff": "git diff --name-only --cached --relative | grep -E \"\\.(ts|tsx|js|jsx)$\" | xargs eslint",
+    "lint-diff": "git diff --name-only --cached --no-error-on-unmatched-pattern --relative | grep -E \"\\.(ts|tsx|js|jsx)$\" | xargs eslint",
     "check-types": "tsc"
   },
   "dependencies": {
