@@ -10,31 +10,31 @@ import BookDetail from '@screens/BookDetail';
 import Wishlist from '@components/Wishlist';
 import TabBarIcon from '@components/TabBarIcon';
 
-const stackNavigator = createStackNavigator<RootStackParamList>();
-const tabNavigator = createBottomTabNavigator<RootTabParamList>();
+const StackNavigator = createStackNavigator<RootStackParamList>();
+const TabNavigator = createBottomTabNavigator<RootTabParamList>();
 
 function LibraryStackScreen() {
   return (
-    <stackNavigator.Navigator initialRouteName={Routes.BookList} screenOptions={stackNavigatorConfig}>
-      <stackNavigator.Screen name={Routes.BookList} component={BookList} options={{ title: 'LIBRARY' }} />
-      <stackNavigator.Screen
+    <StackNavigator.Navigator initialRouteName={Routes.BookList} screenOptions={stackNavigatorConfig}>
+      <StackNavigator.Screen name={Routes.BookList} component={BookList} options={{ title: 'LIBRARY' }} />
+      <StackNavigator.Screen
         name={Routes.BookDetail}
         component={BookDetail}
         options={{ title: 'BOOK DETAIL' }}
       />
-    </stackNavigator.Navigator>
+    </StackNavigator.Navigator>
   );
 }
 
 function TabNavigatorScreen() {
   return (
-    <tabNavigator.Navigator
+    <TabNavigator.Navigator
       initialRouteName={Routes.Library}
       screenOptions={{ tabBarIcon: TabBarIcon }}
       tabBarOptions={tabNavigatorConfig}>
-      <tabNavigator.Screen name={Routes.Library} component={LibraryStackScreen} />
-      <tabNavigator.Screen name={Routes.Wishlist} component={Wishlist} />
-    </tabNavigator.Navigator>
+      <TabNavigator.Screen name={Routes.Library} component={LibraryStackScreen} />
+      <TabNavigator.Screen name={Routes.Wishlist} component={Wishlist} />
+    </TabNavigator.Navigator>
   );
 }
 
