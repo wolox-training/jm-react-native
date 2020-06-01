@@ -26,7 +26,7 @@ export default StyleSheet.create({
         fontWeight: '800'
       },
       android: {
-        fontWeight: 'bold'
+        fontWeight: '700'
       }
     }),
     fontSize: 16
