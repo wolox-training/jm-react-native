@@ -1,4 +1,4 @@
-import { black } from './colors';
+import { black, white } from './colors';
 
 export const SHADOW = {
   shadowColor: black,
@@ -19,4 +19,18 @@ export const MEDIUM_FONT = {
 export const SQUARE_NARROW = {
   width: 20,
   height: 20
+};
+
+export const FIELD = {
+  width: 240,
+  maxWidth: '80%',
+  backgroundColor: white,
+  padding: 12,
+  borderRadius: 5,
+  fontSize: 16
+};
+
+export const ROUNDED_BUTTON = {
+  borderWidth: 1.5,
+  borderRadius: 100
 };

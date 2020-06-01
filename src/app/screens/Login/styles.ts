@@ -1,14 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { white } from '@constants/colors';
-
-export const FIELD = {
-  width: 240,
-  maxWidth: '80%',
-  backgroundColor: white,
-  padding: 12,
-  borderRadius: 5,
-  fontSize: 16
-};
+import { FIELD, ROUNDED_BUTTON } from '@constants/styleHelpers';
 
 export default StyleSheet.create({
   loginBackground: {
@@ -21,11 +13,10 @@ export default StyleSheet.create({
     marginBottom: 30
   },
   loginButton: {
-    borderColor: white,
-    borderWidth: 1.5,
-    borderRadius: 100,
+    ...ROUNDED_BUTTON,
     paddingHorizontal: 12,
     paddingVertical: 8,
+    borderColor: white,
     marginTop: 24
   },
   loginButtonText: {
