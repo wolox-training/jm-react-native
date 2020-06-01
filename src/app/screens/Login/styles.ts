@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { white } from '@constants/colors';
 import { FIELD, ROUNDED_BUTTON } from '@constants/styleHelpers';
 
@@ -14,14 +14,21 @@ export default StyleSheet.create({
   },
   loginButton: {
     ...ROUNDED_BUTTON,
-    paddingHorizontal: 12,
+    paddingHorizontal: 20,
     paddingVertical: 8,
     borderColor: white,
     marginTop: 24
   },
   loginButtonText: {
     color: white,
-    fontWeight: '800',
+    ...Platform.select({
+      ios: {
+        fontWeight: '800'
+      },
+      android: {
+        fontWeight: 'bold'
+      }
+    }),
     fontSize: 16
   },
   emailField: {
