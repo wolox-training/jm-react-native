@@ -17,6 +17,7 @@ if (__DEV__) {
     .use(trackGlobalErrors({}))
     .use(tronsauce())
     .use(asyncStorage({}))
+    .use(overlay())
     .connect();
 
   // eslint-disable-next-line no-console
