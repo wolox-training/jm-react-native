@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
-import { RootStackParamList } from '@interfaces/navigation';
+import { LibraryNavigatorParams } from '@interfaces/navigation';
 import Routes from '@constants/routes';
 import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
 
 import styles from './styles';
 
-type BookDetailScreenRouteProp = RouteProp<RootStackParamList, Routes.BookDetail>;
+type BookDetailScreenRouteProp = RouteProp<LibraryNavigatorParams, Routes.BookDetail>;
 
 function BookInfo() {
   const route = useRoute<BookDetailScreenRouteProp>();
