@@ -59,6 +59,7 @@
     "prettier": "^2.0.5",
     "prettier-eslint": "^9.0.1",
     "react-test-renderer": "16.11.0",
+    "reactotron-react-native": "^5.0.0",
     "typescript": "^3.8.3"
   },
   "jest": {
