@@ -1,8 +1,8 @@
 import React from 'react';
-import { ImageBackground, Image, TouchableOpacity, Text } from 'react-native';
+import { ImageBackground, Image, TextInput } from 'react-native';
 import loginBackground from '@assets/bc_inicio.png';
 import appLogo from '@assets/wbooks_logo.png';
-import { TextInput } from 'react-native-gesture-handler';
+import Button from '@components/Button';
 
 import styles from './styles';
 
@@ -12,9 +12,7 @@ function Login() {
       <Image source={appLogo} style={styles.logo} />
       <TextInput placeholder="Email (john.doe@email.com)" />
       <TextInput placeholder="Password (* * * * * * * *)" />
-      <TouchableOpacity>
-        <Text>Sign in</Text>
-      </TouchableOpacity>
+      <Button>Sign in</Button>
     </ImageBackground>
   );
 }

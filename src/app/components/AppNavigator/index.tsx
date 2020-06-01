@@ -43,7 +43,7 @@ function DashboardNavigatorScreen() {
   );
 }
 
-const userIsLogged = false;
+const userIsLogged = true;
 
 function AuthNavigatorScreen() {
   return (
