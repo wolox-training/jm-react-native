@@ -45,15 +45,15 @@ export default StyleSheet.create({
   },
   watchlistButton: {
     borderColor: blue,
-    borderWidth: 2,
+    borderWidth: 1.5,
     borderRadius: 100,
-    marginBottom: 10
+    marginBottom: 10,
+    padding: 12
   },
   watchlistButtonText: {
     fontSize: 16,
     fontWeight: '800',
     color: blue,
-    padding: 12,
     textAlign: 'center'
   },
   rentButton: {
