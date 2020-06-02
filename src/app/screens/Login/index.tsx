@@ -38,7 +38,7 @@ function Login() {
         value={password}
       />
       <Button
-        buttonStyle={styles.loginButton}
+        buttonStyle={{ ...styles.loginButton, ...(!formIsValid && styles.loginButtonDisabled) }}
         buttonTextStyle={styles.loginButtonText}
         onPress={signIn}
         disabled={!formIsValid}>
