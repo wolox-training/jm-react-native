@@ -1,13 +1,14 @@
 import React from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
-import { RootStackParamList } from '@interfaces/navigation';
+import { LibraryNavigatorParams } from '@interfaces/navigation';
 import Routes from '@constants/routes';
 import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
+import Button from '@components/Button';
 
 import styles from './styles';
 
-type BookDetailScreenRouteProp = RouteProp<RootStackParamList, Routes.BookDetail>;
+type BookDetailScreenRouteProp = RouteProp<LibraryNavigatorParams, Routes.BookDetail>;
 
 function BookInfo() {
   const route = useRoute<BookDetailScreenRouteProp>();
@@ -27,12 +28,12 @@ function BookInfo() {
         </View>
       </View>
       <View style={styles.bookDetailActions}>
-        <TouchableOpacity style={styles.watchlistButton}>
-          <Text style={styles.watchlistButtonText}>ADD TO WATCHLIST</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.rentButton}>
-          <Text style={styles.rentButtonText}>RENT</Text>
-        </TouchableOpacity>
+        <Button buttonStyle={styles.watchlistButton} buttonTextStyle={styles.watchlistButtonText}>
+          ADD TO WATCHLIST
+        </Button>
+        <Button buttonStyle={styles.rentButton} buttonTextStyle={styles.rentButtonText}>
+          ADD TO WATCHLIST
+        </Button>
       </View>
     </View>
   );

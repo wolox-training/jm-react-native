@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View } from 'react-native';
 import { Comment } from '@interfaces/comment';
 import { COMMENTS } from '@constants/mockData';
+import Button from '@app/components/Button';
 
 import CommentCard from './components/CommentCard';
 import styles from './styles';
@@ -14,9 +15,12 @@ function CommentList() {
   return (
     <View style={styles.commentSection}>
       <View>{COMMENTS.slice(0, commentsLength).map(renderComment)}</View>
-      <TouchableOpacity onPress={togglelistIsExpanded} style={styles.viewAllButton}>
-        <Text style={styles.viewAllButtonText}>{listIsExpanded ? 'Show Less' : 'Show More'}</Text>
-      </TouchableOpacity>
+      <Button
+        onPress={togglelistIsExpanded}
+        buttonStyle={styles.viewAllButton}
+        buttonTextStyle={styles.viewAllButtonText}>
+        {listIsExpanded ? 'Show Less' : 'Show More'}
+      </Button>
     </View>
   );
 }

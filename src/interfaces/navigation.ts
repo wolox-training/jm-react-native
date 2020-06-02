@@ -2,12 +2,17 @@ import Routes from '@constants/routes';
 
 import { Book } from './book';
 
-export type RootStackParamList = {
+export type LibraryNavigatorParams = {
   [Routes.BookList]: undefined;
   [Routes.BookDetail]: { book: Book };
 };
 
-export type RootTabParamList = {
+export type DashboardNavigatorParams = {
   [Routes.Library]: undefined;
   [Routes.Wishlist]: undefined;
+};
+
+export type AuthNavigatorParams = {
+  [Routes.Login]: undefined;
+  [Routes.Dashboard]: undefined;
 };

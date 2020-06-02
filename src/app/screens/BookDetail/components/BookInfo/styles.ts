@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { white, gray, blue, lightGray, red } from '@constants/colors';
-import { SHADOW, MEDIUM_FONT } from '@constants/styleHelpers';
+import { SHADOW, MEDIUM_FONT, ROUNDED_BUTTON } from '@constants/styleHelpers';
 
 export default StyleSheet.create({
   bookInfo: {
@@ -44,16 +44,15 @@ export default StyleSheet.create({
     width: '100%'
   },
   watchlistButton: {
+    ...ROUNDED_BUTTON,
     borderColor: blue,
-    borderWidth: 2,
-    borderRadius: 100,
-    marginBottom: 10
+    marginBottom: 10,
+    padding: 12
   },
   watchlistButtonText: {
     fontSize: 16,
     fontWeight: '800',
     color: blue,
-    padding: 12,
     textAlign: 'center'
   },
   rentButton: {

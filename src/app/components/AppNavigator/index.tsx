@@ -3,29 +3,35 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Routes from '@constants/routes';
 import { tabNavigatorConfig, stackNavigatorConfig } from '@config/navigation';
-import { RootTabParamList, RootStackParamList } from '@interfaces/navigation';
+import {
+  LibraryNavigatorParams,
+  DashboardNavigatorParams,
+  AuthNavigatorParams
+} from '@interfaces/navigation';
 import BookList from '@screens/BookList';
 import BookDetail from '@screens/BookDetail';
 import Wishlist from '@components/Wishlist';
 import TabBarIcon from '@components/TabBarIcon';
+import Login from '@screens/Login';
 
-const StackNavigator = createStackNavigator<RootStackParamList>();
-const TabNavigator = createBottomTabNavigator<RootTabParamList>();
+const LibraryNavigator = createStackNavigator<LibraryNavigatorParams>();
+const TabNavigator = createBottomTabNavigator<DashboardNavigatorParams>();
+const AuthNavigator = createStackNavigator<AuthNavigatorParams>();
 
 function LibraryStackScreen() {
   return (
-    <StackNavigator.Navigator initialRouteName={Routes.BookList} screenOptions={stackNavigatorConfig}>
-      <StackNavigator.Screen name={Routes.BookList} component={BookList} options={{ title: 'LIBRARY' }} />
-      <StackNavigator.Screen
+    <LibraryNavigator.Navigator initialRouteName={Routes.BookList} screenOptions={stackNavigatorConfig}>
+      <LibraryNavigator.Screen name={Routes.BookList} component={BookList} options={{ title: 'LIBRARY' }} />
+      <LibraryNavigator.Screen
         name={Routes.BookDetail}
         component={BookDetail}
         options={{ title: 'BOOK DETAIL' }}
       />
-    </StackNavigator.Navigator>
+    </LibraryNavigator.Navigator>
   );
 }
 
-function TabNavigatorScreen() {
+function DashboardNavigatorScreen() {
   return (
     <TabNavigator.Navigator
       initialRouteName={Routes.Library}
@@ -37,4 +43,18 @@ function TabNavigatorScreen() {
   );
 }
 
-export default TabNavigatorScreen;
+const userIsLogged = false;
+
+function AuthNavigatorScreen() {
+  return (
+    <AuthNavigator.Navigator headerMode="none">
+      {userIsLogged ? (
+        <AuthNavigator.Screen name={Routes.Dashboard} component={DashboardNavigatorScreen} />
+      ) : (
+        <AuthNavigator.Screen name={Routes.Login} component={Login} />
+      )}
+    </AuthNavigator.Navigator>
+  );
+}
+
+export default AuthNavigatorScreen;
