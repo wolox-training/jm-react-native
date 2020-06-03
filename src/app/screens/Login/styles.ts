@@ -19,6 +19,9 @@ export default StyleSheet.create({
     borderColor: white,
     marginTop: 24
   },
+  loginButtonDisabled: {
+    opacity: 0.5
+  },
   loginButtonText: {
     color: white,
     ...Platform.select({
