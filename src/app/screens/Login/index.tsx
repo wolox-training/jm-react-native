@@ -7,7 +7,7 @@ import { FIELD } from '@constants/styleHelpers';
 import { isEmail, isPresent } from '@constants/validations';
 import authActions from '@redux/auth/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { State } from '@interfaces/state';
+import { AppState } from '@interfaces/appState';
 
 import styles from './styles';
 
@@ -15,7 +15,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const userIsLoading = useSelector((state: State) => state.auth.userLoading);
+  const userIsLoading = useSelector((state: AppState) => state.auth.userLoading);
 
   const formIsValid = isEmail(email) && isPresent(password);
   const submitDisabled = !formIsValid || userIsLoading;

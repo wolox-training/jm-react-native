@@ -1,5 +1,5 @@
 import { AuthState } from './auth';
 
-export interface State {
+export interface AppState {
   auth: AuthState;
 }

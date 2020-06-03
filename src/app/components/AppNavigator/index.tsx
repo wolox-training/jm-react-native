@@ -14,7 +14,7 @@ import BookDetail from '@screens/BookDetail';
 import Wishlist from '@components/Wishlist';
 import TabBarIcon from '@components/TabBarIcon';
 import Login from '@screens/Login';
-import { State } from '@interfaces/state';
+import { AppState } from '@interfaces/appState';
 
 const LibraryNavigator = createStackNavigator<LibraryNavigatorParams>();
 const TabNavigator = createBottomTabNavigator<DashboardNavigatorParams>();
@@ -46,7 +46,7 @@ function DashboardNavigatorScreen() {
 }
 
 function AuthNavigatorScreen() {
-  const { user } = useSelector((state: State) => state.auth);
+  const { user } = useSelector((state: AppState) => state.auth);
   return (
     <AuthNavigator.Navigator headerMode="none">
       {user ? (
