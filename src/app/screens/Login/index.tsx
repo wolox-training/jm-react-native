@@ -5,9 +5,14 @@ import appLogo from '@assets/wbooks_logo.png';
 import Button from '@components/Button';
 import { FIELD } from '@constants/styleHelpers';
 import { isEmail, isPresent } from '@constants/validations';
+<<<<<<< HEAD
 import authActions from '@redux/auth/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '@interfaces/appState';
+=======
+import { useAuthContext } from '@constants/auth';
+import withLoading from '@app/components/WithLoading';
+>>>>>>> add loading hoc (beta)
 
 import styles from './styles';
 
@@ -53,4 +58,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default withLoading(Login);
