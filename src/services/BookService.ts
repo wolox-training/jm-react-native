@@ -1,5 +1,7 @@
 import api from '@config/api';
 
-export default {
+const BookService = {
   getBookDetail: (id: number) => api.get(`api/v1/books/${id}`)
 };
+
+export default BookService;

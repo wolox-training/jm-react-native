@@ -1,17 +1,13 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
-import { RouteProp, useRoute } from '@react-navigation/native';
-import { LibraryNavigatorParams } from '@interfaces/navigation';
-import Routes from '@constants/routes';
+import { useRoute } from '@react-navigation/native';
 import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
 import Button from '@components/Button';
 
 import styles from './styles';
 
-type BookDetailScreenRouteProp = RouteProp<LibraryNavigatorParams, Routes.BookDetail>;
-
 function BookInfo() {
-  const route = useRoute<BookDetailScreenRouteProp>();
+  const route = useRoute();
   const { imageUrl, title, author, year, genre } = route.params.book;
   return (
     <View style={styles.bookInfo}>
@@ -32,7 +28,7 @@ function BookInfo() {
           ADD TO WATCHLIST
         </Button>
         <Button buttonStyle={styles.rentButton} buttonTextStyle={styles.rentButtonText}>
-          ADD TO WATCHLIST
+          RENT
         </Button>
       </View>
     </View>

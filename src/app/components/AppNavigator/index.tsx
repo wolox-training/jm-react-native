@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Routes from '@constants/routes';
@@ -13,7 +14,6 @@ import BookDetail from '@screens/BookDetail';
 import Wishlist from '@components/Wishlist';
 import TabBarIcon from '@components/TabBarIcon';
 import Login from '@screens/Login';
-import AuthProvider from '@constants/auth';
 
 const LibraryNavigator = createStackNavigator<LibraryNavigatorParams>();
 const TabNavigator = createBottomTabNavigator<DashboardNavigatorParams>();
@@ -45,17 +45,15 @@ function DashboardNavigatorScreen() {
 }
 
 function AuthNavigatorScreen() {
-  const [userIsAuth, setUserIsAuth] = useState(false);
+  const user = useSelector(state => state.auth.user);
   return (
-    <AuthProvider value={{ setUserIsAuth }}>
-      <AuthNavigator.Navigator headerMode="none">
-        {userIsAuth ? (
-          <AuthNavigator.Screen name={Routes.Dashboard} component={DashboardNavigatorScreen} />
-        ) : (
-          <AuthNavigator.Screen name={Routes.Login} component={Login} />
-        )}
-      </AuthNavigator.Navigator>
-    </AuthProvider>
+    <AuthNavigator.Navigator headerMode="none">
+      {user ? (
+        <AuthNavigator.Screen name={Routes.Dashboard} component={DashboardNavigatorScreen} />
+      ) : (
+        <AuthNavigator.Screen name={Routes.Login} component={Login} />
+      )}
+    </AuthNavigator.Navigator>
   );
 }
 

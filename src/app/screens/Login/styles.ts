@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
-import { white, gray } from '@constants/colors';
+import { white } from '@constants/colors';
 import { FIELD, ROUNDED_BUTTON } from '@constants/styleHelpers';
 
 export default StyleSheet.create({

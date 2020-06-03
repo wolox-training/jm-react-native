@@ -2,6 +2,7 @@ import Reactotron, { asyncStorage, overlay, trackGlobalErrors } from 'reactotron
 import { NativeModules } from 'react-native';
 import tronsauce from 'reactotron-apisauce';
 import { Tron } from '@interfaces/reactotron';
+import { reactotronRedux } from 'reactotron-redux';
 
 declare global {
   interface Console {
@@ -9,13 +10,17 @@ declare global {
   }
 }
 
+const reactotron = Reactotron;
+
 if (__DEV__) {
   const { scriptURL } = NativeModules.SourceCode;
   const scriptHostname = scriptURL.split('://')[1].split(':')[0];
 
-  Reactotron.configure({ name: 'wbooks', host: scriptHostname })
+  reactotron
+    .configure({ name: 'wbooks', host: scriptHostname })
     .use(trackGlobalErrors({}))
     .use(tronsauce())
+    .use(reactotronRedux())
     .use(asyncStorage({}))
     .use(overlay())
     .connect();
@@ -29,4 +34,4 @@ if (__DEV__) {
   };
 }
 
-export default Reactotron;
+export default reactotron;

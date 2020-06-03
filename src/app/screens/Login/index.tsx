@@ -5,16 +5,20 @@ import appLogo from '@assets/wbooks_logo.png';
 import Button from '@components/Button';
 import { FIELD } from '@constants/styleHelpers';
 import { isEmail, isPresent } from '@constants/validations';
-import { useAuthContext } from '@constants/auth';
+import authActions from '@redux/auth/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './styles';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setUserIsAuth } = useAuthContext();
+  const dispatch = useDispatch();
+  const userIsLoading = useSelector(state => state.auth.userLoading);
+
   const formIsValid = isEmail(email) && isPresent(password);
-  const signIn = () => setUserIsAuth(true);
+  const submitDisabled = !formIsValid || userIsLoading;
+  const signIn = () => dispatch(authActions.logIn({ email, password }));
 
   return (
     <ImageBackground source={loginBackground} style={styles.loginBackground}>
@@ -38,11 +42,11 @@ function Login() {
         value={password}
       />
       <Button
-        buttonStyle={{ ...styles.loginButton, ...(!formIsValid && styles.loginButtonDisabled) }}
+        buttonStyle={{ ...styles.loginButton, ...(submitDisabled && styles.loginButtonDisabled) }}
         buttonTextStyle={styles.loginButtonText}
         onPress={signIn}
-        disabled={!formIsValid}>
-        Sign in
+        disabled={submitDisabled}>
+        {userIsLoading ? 'Loading...' : 'Sign in'}
       </Button>
     </ImageBackground>
   );
