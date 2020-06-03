@@ -1,15 +1,15 @@
 import AuthService from '@services/AuthService';
 import { UserCredentials } from '@interfaces/auth';
-import { ThunkAction } from 'redux-thunk';
+import { Dispatch } from 'redux';
 
 export const actions = {
-  LOGIN: 'LOGIN_LOADING',
+  LOGIN: '@@AUTH/LOGIN',
   LOGIN_SUCCESS: '@@AUTH/LOGIN_SUCCESS',
   LOGIN_FAILURE: '@@AUTH/LOGIN_FAILURE'
-};
+} as const;
 
 const actionCreators = {
-  logIn: (credentials: UserCredentials) => async (dispatch: any) => {
+  logIn: (credentials: UserCredentials) => async (dispatch: Dispatch) => {
     dispatch({ type: actions.LOGIN });
     const response = await AuthService.logIn(credentials);
     if (response.ok) {
