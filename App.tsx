@@ -1,9 +1,11 @@
 import '@config/reactotron';
 import React from 'react';
+
 import { Provider } from 'react-redux';
-import store from '@redux/store';
 
 import App from './src/app';
+
+import store from '@redux/store';
 
 export default function index() {
   return (

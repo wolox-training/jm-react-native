@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { ImageBackground, Image, TextInput } from 'react-native';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import styles from './styles';
+
 import loginBackground from '@assets/bc_inicio.png';
 import appLogo from '@assets/wbooks_logo.png';
 import Button from '@components/Button';
@@ -8,8 +13,6 @@ import { FIELD } from '@constants/styleHelpers';
 import { isEmail, isPresent } from '@constants/validations';
 import { AppState } from '@interfaces/appState';
 import authActions from '@redux/auth/actions';
-
-import styles from './styles';
 
 function Login() {
   const [email, setEmail] = useState('');

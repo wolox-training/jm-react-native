@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+
 import { white, gray } from '@constants/colors';
 import { SHADOW, MEDIUM_FONT } from '@constants/styleHelpers';
 

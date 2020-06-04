@@ -1,6 +1,6 @@
-import { white, blue, gray2 } from '@constants/colors';
-import HeaderBackground from '@components/HeaderBackground';
 import BackButton from '@components/BackButton';
+import HeaderBackground from '@components/HeaderBackground';
+import { white, blue, gray2 } from '@constants/colors';
 
 export const stackNavigatorConfig = {
   headerTitleStyle: {

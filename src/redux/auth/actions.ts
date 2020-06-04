@@ -1,9 +1,10 @@
-import { Dispatch } from 'redux';
 import { ApiResponse } from 'apisauce';
+import { Dispatch } from 'redux';
+
+import { LoginResponse } from '@interfaces/api';
 import { UserCredentials } from '@interfaces/auth';
 import AuthService from '@services/AuthService';
 import { deserializer } from '@services/utlis';
-import { LoginResponse } from '@interfaces/api';
 
 export const actions = {
   LOGIN: '@@AUTH/LOGIN',

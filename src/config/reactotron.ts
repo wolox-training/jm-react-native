@@ -1,8 +1,10 @@
-import Reactotron, { asyncStorage, overlay, trackGlobalErrors } from 'reactotron-react-native';
 import { NativeModules } from 'react-native';
+
 import tronsauce from 'reactotron-apisauce';
-import { Tron } from '@interfaces/reactotron';
+import Reactotron, { asyncStorage, overlay, trackGlobalErrors } from 'reactotron-react-native';
 import { reactotronRedux } from 'reactotron-redux';
+
+import { Tron } from '@interfaces/reactotron';
 
 declare global {
   interface Console {
