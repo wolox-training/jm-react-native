@@ -34,4 +34,4 @@ interface LoginFailureAction {
   payload: string;
 }
 
-export type AuthActionTypes = LoginAction | LoginSuccessAction | LoginFailureAction
+export type AuthAction = LoginAction | LoginSuccessAction | LoginFailureAction
