@@ -1,8 +1,10 @@
 import React, { ComponentType, FC } from 'react';
+
 import { ActivityIndicator, View } from 'react-native';
-import { blue } from '@constants/colors';
 
 import styles from './styles';
+
+import { blue } from '@constants/colors';
 
 interface WithLoadingProps {
   loading: boolean;
