@@ -1,9 +1,10 @@
 /* eslint-disable camelcase */
-import { Book } from '@interfaces/book';
 import { CamelcaseSerializer } from 'cerealizr';
-import { Comment } from '@interfaces/comment';
+
 import avatar1 from '@assets/img_user1.png';
 import avatar2 from '@assets/img_user2.png';
+import { Book } from '@interfaces/book';
+import { Comment } from '@interfaces/comment';
 
 const booksReponse = [
   {

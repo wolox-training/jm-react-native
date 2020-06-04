@@ -1,6 +1,10 @@
-import AuthService from '@services/AuthService';
-import { UserCredentials } from '@interfaces/auth';
+import { ApiResponse } from 'apisauce';
 import { Dispatch } from 'redux';
+
+import { LoginResponse } from '@interfaces/api';
+import { UserCredentials } from '@interfaces/auth';
+import AuthService from '@services/AuthService';
+import { deserializer } from '@services/utlis';
 
 export const actions = {
   LOGIN: '@@AUTH/LOGIN',
@@ -11,11 +15,11 @@ export const actions = {
 const actionCreators = {
   logIn: (credentials: UserCredentials) => async (dispatch: Dispatch) => {
     dispatch({ type: actions.LOGIN });
-    const response = await AuthService.logIn(credentials);
+    const response: ApiResponse<LoginResponse, string> = await AuthService.logIn(credentials);
     if (response.ok) {
       dispatch({
         type: actions.LOGIN_SUCCESS,
-        payload: response.data
+        payload: deserializer.serialize(response!.data?.data)
       });
     } else {
       dispatch({

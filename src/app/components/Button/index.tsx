@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+
 import { TouchableOpacity, Text, ViewStyle, StyleProp, TextStyle, TouchableOpacityProps } from 'react-native';
 
 interface Props extends TouchableOpacityProps {

@@ -1,4 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
+
 import { white } from '@constants/colors';
 import { FIELD, ROUNDED_BUTTON } from '@constants/styleHelpers';
 
