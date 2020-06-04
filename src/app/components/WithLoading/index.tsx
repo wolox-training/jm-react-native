@@ -1,11 +1,22 @@
-import React, { ReactNode } from 'react';
-import { ActivityIndicator } from 'react-native';
+import React, { ComponentType, FC } from 'react';
+import { ActivityIndicator, View } from 'react-native';
+import { blue } from '@constants/colors';
 
 import styles from './styles';
 
-function WithLoading(Component: ReactNode) {
-  return ({ isLoading, ...props }) =>
-    isLoading ? <ActivityIndicator style={styles.loader} /> : <Component {...props} />;
+interface WithLoadingProps {
+  loading: boolean;
+}
+
+function WithLoading<P extends object>(Component: ComponentType<P>): FC<P & WithLoadingProps> {
+  return ({ loading, ...props }: WithLoadingProps) =>
+    loading ? (
+      <View style={styles.loader}>
+        <ActivityIndicator size="large" color={blue} />
+      </View>
+    ) : (
+      <Component {...(props as P)} />
+    );
 }
 
 export default WithLoading;
