@@ -12,14 +12,11 @@ declare global {
   }
 }
 
-const reactotron = Reactotron;
-
 if (__DEV__) {
   const { scriptURL } = NativeModules.SourceCode;
   const scriptHostname = scriptURL.split('://')[1].split(':')[0];
 
-  reactotron
-    .configure({ name: 'wbooks', host: scriptHostname })
+  Reactotron.configure({ name: 'wbooks', host: scriptHostname })
     .use(trackGlobalErrors({}))
     .use(tronsauce())
     .use(reactotronRedux())
@@ -36,4 +33,4 @@ if (__DEV__) {
   };
 }
 
-export default reactotron;
+export default Reactotron;
