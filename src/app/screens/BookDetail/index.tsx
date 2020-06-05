@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { ScrollView } from 'react-native';
 
 import BookInfo from './components/BookInfo';

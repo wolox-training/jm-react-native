@@ -1,6 +1,6 @@
-import { Book } from './book';
-
 import Routes from '@constants/routes';
+
+import { Book } from './book';
 
 export type LibraryNavigatorParams = {
   [Routes.BookList]: undefined;
