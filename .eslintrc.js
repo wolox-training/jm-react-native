@@ -11,41 +11,19 @@ module.exports = {
       {
         'newlines-between': 'always',
         alphabetize: { order: 'asc', caseInsensitive: true },
-        pathGroups: [
-          {
-            pattern: 'react',
-            group: 'external',
-            position: 'before'
-          },
-          {
-            pattern: 'react-native',
-            group: 'external',
-            position: 'before'
-          }
-        ],
-        pathGroupsExcludedImportTypes: ['react', 'react-native']
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index'
+        ]
       }
     ]
   },
   settings: {
     'import/ignore': ['node_modules'],
-    'import/resolver': {
-      'babel-module': {
-        root: ['./src'],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        alias: {
-          '@app': './src/app',
-          '@assets': './src/app/assets',
-          '@components': './src/app/components',
-          '@screens': './src/app/screens',
-          '@config': './src/config',
-          '@constants': './src/constants',
-          '@interfaces': './src/interfaces',
-          '@redux': './src/redux',
-          '@services': './src/services',
-          '@utils': './src/utils'
-        }
-      }
-    }
+    'import/resolver': 'babel-module'
   }
 };

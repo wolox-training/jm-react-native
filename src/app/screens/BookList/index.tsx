@@ -1,12 +1,11 @@
 import React from 'react';
-
 import { FlatList, ListRenderItem } from 'react-native';
-
-import BookCard from './components/BookCard';
-import styles from './styles';
 
 import { BOOKS } from '@constants/mockData';
 import { Book } from '@interfaces/book';
+
+import BookCard from './components/BookCard';
+import styles from './styles';
 
 function BookList() {
   const keyExtractor = ({ id }: Book) => String(id);

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-
 import { View } from 'react-native';
-
-import CommentCard from './components/CommentCard';
-import styles from './styles';
 
 import Button from '@app/components/Button';
 import { COMMENTS } from '@constants/mockData';
 import { Comment } from '@interfaces/comment';
+
+import CommentCard from './components/CommentCard';
+import styles from './styles';
 
 function CommentList() {
   const [listIsExpanded, setlistIsExpanded] = useState(false);

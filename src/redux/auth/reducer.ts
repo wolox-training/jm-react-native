@@ -1,6 +1,6 @@
-import { actions } from './actions';
-
 import { AuthAction, AuthState } from '@interfaces/auth';
+
+import { actions } from './actions';
 
 const initalState: AuthState = {
   user: null,

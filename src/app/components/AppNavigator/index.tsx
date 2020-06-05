@@ -1,7 +1,6 @@
-import React from 'react';
-
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 import TabBarIcon from '@components/TabBarIcon';
