@@ -10,8 +10,6 @@ import { isEmail, isPresent } from '@constants/validations';
 import { AppState } from '@interfaces/appState';
 import authActions from '@redux/auth/actions';
 
-import parenStyles from '../BookDetail/styles';
-
 import styles from './styles';
 
 function Login() {
@@ -28,7 +26,7 @@ function Login() {
     <ImageBackground source={loginBackground} style={styles.loginBackground}>
       <Image source={appLogo} style={styles.logo} />
       <TextInput
-        style={parenStyles.bookDetail}
+        style={styles.emailField}
         placeholder="Email"
         autoCapitalize="none"
         textContentType="emailAddress"
