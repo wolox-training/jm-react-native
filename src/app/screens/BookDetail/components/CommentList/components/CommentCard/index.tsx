@@ -1,10 +1,9 @@
 import React from 'react';
-
 import { View, Image, Text } from 'react-native';
 
-import styles from './styles';
-
 import { Comment } from '@interfaces/comment';
+
+import styles from './styles';
 
 interface Props extends Comment {}
 

@@ -1,5 +1,4 @@
 import { NativeModules } from 'react-native';
-
 import tronsauce from 'reactotron-apisauce';
 import Reactotron, { asyncStorage, overlay, trackGlobalErrors } from 'reactotron-react-native';
 import { reactotronRedux } from 'reactotron-redux';
