@@ -1,6 +1,7 @@
-import React from 'react';
 import { useRoute } from '@react-navigation/native';
+import React from 'react';
 import { Image } from 'react-native';
+
 import { TabNavigatorIcons } from '@constants/routes';
 import { SQUARE_NARROW } from '@constants/styleHelpers';
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import headerBackground from '@assets/bc_navbar.png';
 import { Image } from 'react-native';
+
+import headerBackground from '@assets/bc_navbar.png';
 
 import styles from './styles';
 

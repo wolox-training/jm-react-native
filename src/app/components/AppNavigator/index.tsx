@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Routes from '@constants/routes';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+import TabBarIcon from '@components/TabBarIcon';
+import Wishlist from '@components/Wishlist';
 import { tabNavigatorConfig, stackNavigatorConfig } from '@config/navigation';
+import Routes from '@constants/routes';
+import { AppState } from '@interfaces/appState';
 import {
   LibraryNavigatorParams,
   DashboardNavigatorParams,
   AuthNavigatorParams
 } from '@interfaces/navigation';
-import BookList from '@screens/BookList';
 import BookDetail from '@screens/BookDetail';
-import Wishlist from '@components/Wishlist';
-import TabBarIcon from '@components/TabBarIcon';
+import BookList from '@screens/BookList';
 import Login from '@screens/Login';
-import AuthProvider from '@constants/auth';
 
 const LibraryNavigator = createStackNavigator<LibraryNavigatorParams>();
 const TabNavigator = createBottomTabNavigator<DashboardNavigatorParams>();
@@ -45,17 +47,15 @@ function DashboardNavigatorScreen() {
 }
 
 function AuthNavigatorScreen() {
-  const [userIsAuth, setUserIsAuth] = useState(false);
+  const { user } = useSelector((state: AppState) => state.auth);
   return (
-    <AuthProvider value={{ setUserIsAuth }}>
-      <AuthNavigator.Navigator headerMode="none">
-        {userIsAuth ? (
-          <AuthNavigator.Screen name={Routes.Dashboard} component={DashboardNavigatorScreen} />
-        ) : (
-          <AuthNavigator.Screen name={Routes.Login} component={Login} />
-        )}
-      </AuthNavigator.Navigator>
-    </AuthProvider>
+    <AuthNavigator.Navigator headerMode="none">
+      {user ? (
+        <AuthNavigator.Screen name={Routes.Dashboard} component={DashboardNavigatorScreen} />
+      ) : (
+        <AuthNavigator.Screen name={Routes.Login} component={Login} />
+      )}
+    </AuthNavigator.Navigator>
   );
 }
 

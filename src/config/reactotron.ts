@@ -1,6 +1,8 @@
-import Reactotron, { asyncStorage, overlay, trackGlobalErrors } from 'reactotron-react-native';
 import { NativeModules } from 'react-native';
 import tronsauce from 'reactotron-apisauce';
+import Reactotron, { asyncStorage, overlay, trackGlobalErrors } from 'reactotron-react-native';
+import { reactotronRedux } from 'reactotron-redux';
+
 import { Tron } from '@interfaces/reactotron';
 
 declare global {
@@ -16,6 +18,7 @@ if (__DEV__) {
   Reactotron.configure({ name: 'wbooks', host: scriptHostname })
     .use(trackGlobalErrors({}))
     .use(tronsauce())
+    .use(reactotronRedux())
     .use(asyncStorage({}))
     .use(overlay())
     .connect();

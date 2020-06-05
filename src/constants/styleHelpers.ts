@@ -22,8 +22,7 @@ export const SQUARE_NARROW = {
 };
 
 export const FIELD = {
-  width: 240,
-  maxWidth: '80%',
+  width: 300,
   backgroundColor: white,
   padding: 12,
   borderRadius: 5,

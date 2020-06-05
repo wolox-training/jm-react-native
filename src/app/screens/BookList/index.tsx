@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList, ListRenderItem } from 'react-native';
+
 import { BOOKS } from '@constants/mockData';
 import { Book } from '@interfaces/book';
 

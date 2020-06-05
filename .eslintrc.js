@@ -6,22 +6,24 @@ module.exports = {
     'no-magic-numbers': 'off',
     'new-cap': 'off',
     'comma-dangle': 'off',
-    'import/order': ['error', { 'newlines-between': 'always' }]
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc', caseInsensitive: true },
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index'
+        ]
+      }
+    ]
   },
   settings: {
     'import/ignore': ['node_modules'],
-    'import/resolver': {
-      node: {
-        paths: ['src'],
-        settings: {
-          'import/resolver': {
-            node: {
-              paths: ['src'],
-              extensions: ['.ios.js', '.android.js', '.js', '.jsx', '.ts', '.tsx', '.json']
-            }
-          }
-        }
-      }
-    }
+    'import/resolver': 'babel-module'
   }
 };

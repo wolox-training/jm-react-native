@@ -1,8 +1,8 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 
-import CommentList from './components/CommentList';
 import BookInfo from './components/BookInfo';
+import CommentList from './components/CommentList';
 import styles from './styles';
 
 function BookDetail() {

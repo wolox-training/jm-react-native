@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { Comment } from '@interfaces/comment';
-import { COMMENTS } from '@constants/mockData';
+
 import Button from '@app/components/Button';
+import { COMMENTS } from '@constants/mockData';
+import { Comment } from '@interfaces/comment';
 
 import CommentCard from './components/CommentCard';
 import styles from './styles';
