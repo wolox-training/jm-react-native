@@ -35,3 +35,5 @@ interface LoginFailureAction {
 }
 
 export type AuthAction = LoginAction | LoginSuccessAction | LoginFailureAction
+
+export type AuthResponseHeaders = { 'access-token': string; client: string; uid: string };
