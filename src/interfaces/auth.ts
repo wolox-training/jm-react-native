@@ -18,6 +18,7 @@ export interface User {
   firstName: string;
   lastName: string;
   uid: string;
+  token: string
 }
 
 interface LoginAction {
@@ -35,3 +36,5 @@ interface LoginFailureAction {
 }
 
 export type AuthAction = LoginAction | LoginSuccessAction | LoginFailureAction
+
+export type AuthResponseHeaders = { [key: string]: string };

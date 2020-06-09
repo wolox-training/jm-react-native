@@ -1,3 +1,6 @@
+import AsyncStorage from '@react-native-community/async-storage';
+
+import STORAGE from '@constants/storage';
 import { AuthAction, AuthState } from '@interfaces/auth';
 
 import { actions } from './actions';

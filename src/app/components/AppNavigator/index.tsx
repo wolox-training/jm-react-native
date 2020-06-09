@@ -1,7 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { Text } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 
 import TabBarIcon from '@components/TabBarIcon';
 import Wishlist from '@components/Wishlist';
@@ -13,9 +14,11 @@ import {
   DashboardNavigatorParams,
   AuthNavigatorParams
 } from '@interfaces/navigation';
+import authActions from '@redux/auth/actions';
 import BookDetail from '@screens/BookDetail';
 import BookList from '@screens/BookList';
 import Login from '@screens/Login';
+import AuthService from '@services/AuthService';
 
 const LibraryNavigator = createStackNavigator<LibraryNavigatorParams>();
 const TabNavigator = createBottomTabNavigator<DashboardNavigatorParams>();
@@ -47,15 +50,29 @@ function DashboardNavigatorScreen() {
 }
 
 function AuthNavigatorScreen() {
-  const { user } = useSelector((state: AppState) => state.auth);
-  return (
+  const dispatch = useDispatch();
+  const [loaded, setLoaded] = useState(false);
+  const currentUser = useSelector((state: AppState) => state.auth.user);
+
+  useEffect(() => {
+    AuthService.getAuthData().then(user => {
+      if (user) {
+        dispatch(authActions.loginSuccess(user));
+      }
+      setLoaded(true);
+    });
+  }, [dispatch]);
+
+  return loaded ? (
     <AuthNavigator.Navigator headerMode="none">
-      {user ? (
+      {currentUser ? (
         <AuthNavigator.Screen name={Routes.Dashboard} component={DashboardNavigatorScreen} />
       ) : (
         <AuthNavigator.Screen name={Routes.Login} component={Login} />
       )}
     </AuthNavigator.Navigator>
+  ) : (
+    <Text>Loading...</Text>
   );
 }
 
