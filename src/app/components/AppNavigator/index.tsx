@@ -1,13 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import TabBarIcon from '@components/TabBarIcon';
 import Wishlist from '@components/Wishlist';
 import { tabNavigatorConfig, stackNavigatorConfig } from '@config/navigation';
 import Routes from '@constants/routes';
-import STORAGE from '@constants/storage';
-import { useAsyncStorage } from '@hooks/asyncStorage';
+import { AppState } from '@interfaces/appState';
 import {
   LibraryNavigatorParams,
   DashboardNavigatorParams,
@@ -47,10 +47,10 @@ function DashboardNavigatorScreen() {
 }
 
 function AuthNavigatorScreen() {
-  const userIsLogged = useAsyncStorage(STORAGE.accessToken, false);
+  const currentUser = useSelector((state: AppState) => state.auth.user);
   return (
     <AuthNavigator.Navigator headerMode="none">
-      {userIsLogged ? (
+      {currentUser ? (
         <AuthNavigator.Screen name={Routes.Dashboard} component={DashboardNavigatorScreen} />
       ) : (
         <AuthNavigator.Screen name={Routes.Login} component={Login} />

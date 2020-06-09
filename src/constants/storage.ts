@@ -1,7 +1,6 @@
 const STORAGE = {
-  accessToken: '@accessToken',
-  client: '@client',
-  uid: '@uid'
+  authHeaders: '@authHeaders',
+  user: '@user'
 } as const;
 
 export default STORAGE;

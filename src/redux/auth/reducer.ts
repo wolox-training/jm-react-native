@@ -1,3 +1,6 @@
+import AsyncStorage from '@react-native-community/async-storage';
+
+import STORAGE from '@constants/storage';
 import { AuthAction, AuthState } from '@interfaces/auth';
 
 import { actions } from './actions';
@@ -7,6 +10,10 @@ const initalState: AuthState = {
   userLoading: false,
   userError: null
 };
+
+AsyncStorage.getItem(STORAGE.user).then(currrentUser => {
+  initalState.user = currrentUser && JSON.parse(currrentUser);
+});
 
 const authReducer = (state = initalState, action: AuthAction): AuthState => {
   switch (action.type) {
