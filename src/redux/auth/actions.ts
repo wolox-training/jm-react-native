@@ -5,7 +5,7 @@ import { Dispatch } from 'redux';
 import api from '@config/api';
 import STORAGE from '@constants/storage';
 import { LoginResponse } from '@interfaces/api';
-import { UserCredentials, AuthResponseHeaders } from '@interfaces/auth';
+import { UserCredentials, User } from '@interfaces/auth';
 import AuthService from '@services/AuthService';
 import { deserializer } from '@services/utlis';
 
@@ -16,23 +16,24 @@ export const actions = {
 } as const;
 
 const actionCreators = {
+  loginSuccess: (user: User) => (dispatch: Dispatch) => {
+    AuthService.setAuthData(user);
+    dispatch({
+      type: actions.LOGIN_SUCCESS,
+      payload: user
+    });
+  },
   logIn: (credentials: UserCredentials) => async (dispatch: Dispatch) => {
     dispatch({ type: actions.LOGIN });
     const response: ApiResponse<LoginResponse, string> = await AuthService.logIn(credentials);
 
     if (response.ok) {
-      AsyncStorage.multiSet(
-        [
-          [STORAGE.user, JSON.stringify(response!.data?.data)],
-          [STORAGE.authHeaders, JSON.stringify(response.headers)]
-        ],
-        () => api.setHeaders(response.headers as AuthResponseHeaders)
+      const responseHeaders = response.headers as { 'access-token': string };
+      dispatch<any>(
+        actionCreators.loginSuccess(
+          deserializer.serialize({ ...response!.data?.data, token: responseHeaders['access-token'] })
+        )
       );
-
-      dispatch({
-        type: actions.LOGIN_SUCCESS,
-        payload: deserializer.serialize(response!.data?.data)
-      });
     } else {
       dispatch({
         type: actions.LOGIN_FAILURE,

@@ -1,5 +1,4 @@
 const STORAGE = {
-  authHeaders: '@authHeaders',
   user: '@user'
 } as const;
 
