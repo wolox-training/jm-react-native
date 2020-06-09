@@ -34,6 +34,10 @@ interface LoginFailureAction {
   payload: string;
 }
 
-export type AuthAction = LoginAction | LoginSuccessAction | LoginFailureAction
+interface LogoutAction {
+  type: typeof authActions.LOGOUT;
+}
+
+export type AuthAction = LoginAction | LoginSuccessAction | LoginFailureAction | LogoutAction
 
 export type AuthResponseHeaders = { [key: string]: string };

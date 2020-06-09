@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import LogoutButton from '@components/LogoutButton';
 import TabBarIcon from '@components/TabBarIcon';
 import Wishlist from '@components/Wishlist';
 import { tabNavigatorConfig, stackNavigatorConfig } from '@config/navigation';
@@ -24,7 +25,15 @@ const AuthNavigator = createStackNavigator<AuthNavigatorParams>();
 function LibraryStackScreen() {
   return (
     <LibraryNavigator.Navigator initialRouteName={Routes.BookList} screenOptions={stackNavigatorConfig}>
-      <LibraryNavigator.Screen name={Routes.BookList} component={BookList} options={{ title: 'LIBRARY' }} />
+      <LibraryNavigator.Screen
+        name={Routes.BookList}
+        component={BookList}
+        options={{
+          title: 'LIBRARY',
+          headerLeft: () => <LogoutButton />,
+          headerLeftContainerStyle: { paddingLeft: 12 }
+        }}
+      />
       <LibraryNavigator.Screen
         name={Routes.BookDetail}
         component={BookDetail}

@@ -12,7 +12,8 @@ import { deserializer } from '@services/utlis';
 export const actions = {
   LOGIN: '@@AUTH/LOGIN',
   LOGIN_SUCCESS: '@@AUTH/LOGIN_SUCCESS',
-  LOGIN_FAILURE: '@@AUTH/LOGIN_FAILURE'
+  LOGIN_FAILURE: '@@AUTH/LOGIN_FAILURE',
+  LOGOUT: '@@AUTH/LOGOUT'
 } as const;
 
 const actionCreators = {
@@ -39,6 +40,15 @@ const actionCreators = {
         payload: response.problem
       });
     }
+  },
+  logOut: () => (dispatch: Dispatch) => {
+    dispatch({ type: actions.LOGOUT });
+
+    AsyncStorage.getItem(STORAGE.authHeaders).then(headers => {
+      const authHeaders = headers ? JSON.parse(headers) : {};
+      Object.keys(authHeaders).forEach((header: string) => api.deleteHeader(header));
+      AsyncStorage.multiRemove([STORAGE.authHeaders, STORAGE.user]);
+    });
   }
 };
 
