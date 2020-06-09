@@ -11,10 +11,6 @@ const initalState: AuthState = {
   userError: null
 };
 
-AsyncStorage.getItem(STORAGE.user).then(currrentUser => {
-  initalState.user = currrentUser && JSON.parse(currrentUser);
-});
-
 const authReducer = (state = initalState, action: AuthAction): AuthState => {
   switch (action.type) {
     case actions.LOGIN:
