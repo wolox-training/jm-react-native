@@ -12,7 +12,10 @@ const AuthService = {
   logIn: (credentials: UserCredentials): LoginPromise => api.post('/auth/sign_in', credentials),
   getAuthData: () => AsyncStorage.getItem(STORAGE.user).then(user => user && JSON.parse(user)),
   setAuthData: (user: User) =>
-    AsyncStorage.setItem(STORAGE.user, JSON.stringify(user), () => api.setHeader('Authorization', user.token))
+    AsyncStorage.setItem(STORAGE.user, JSON.stringify(user), () =>
+      api.setHeader('Authorization', user.token)
+    ),
+  removeAuthData: () => AsyncStorage.removeItem(STORAGE.user)
 };
 
 export default AuthService;

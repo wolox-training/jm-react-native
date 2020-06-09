@@ -43,13 +43,8 @@ const actionCreators = {
     }
   },
   logOut: () => (dispatch: Dispatch) => {
+    AuthService.removeAuthData();
     dispatch({ type: actions.LOGOUT });
-
-    AsyncStorage.getItem(STORAGE.authHeaders).then(headers => {
-      const authHeaders = headers ? JSON.parse(headers) : {};
-      Object.keys(authHeaders).forEach((header: string) => api.deleteHeader(header));
-      AsyncStorage.multiRemove([STORAGE.authHeaders, STORAGE.user]);
-    });
   }
 };
 
