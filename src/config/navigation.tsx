@@ -1,5 +1,8 @@
+import React from 'react';
+
 import BackButton from '@components/BackButton';
 import HeaderBackground from '@components/HeaderBackground';
+import LogoutButton from '@components/LogoutButton';
 import { white, blue, gray2 } from '@constants/colors';
 
 export const stackNavigatorConfig = {
@@ -23,4 +26,10 @@ export const tabNavigatorConfig = {
   },
   activeTintColor: blue,
   inactiveTintColor: gray2
+};
+
+export const libraryScreenConfig = {
+  title: 'LIBRARY',
+  headerLeft: () => <LogoutButton />,
+  headerLeftContainerStyle: { paddingLeft: 12 }
 };

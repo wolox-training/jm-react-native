@@ -1,9 +1,6 @@
-import AsyncStorage from '@react-native-community/async-storage';
 import { ApiResponse } from 'apisauce';
 import { Dispatch } from 'redux';
 
-import api from '@config/api';
-import STORAGE from '@constants/storage';
 import { LoginResponse } from '@interfaces/api';
 import { UserCredentials, User } from '@interfaces/auth';
 import AuthService from '@services/AuthService';
@@ -12,7 +9,8 @@ import { deserializer } from '@services/utlis';
 export const actions = {
   LOGIN: '@@AUTH/LOGIN',
   LOGIN_SUCCESS: '@@AUTH/LOGIN_SUCCESS',
-  LOGIN_FAILURE: '@@AUTH/LOGIN_FAILURE'
+  LOGIN_FAILURE: '@@AUTH/LOGIN_FAILURE',
+  LOGOUT: '@@AUTH/LOGOUT'
 } as const;
 
 const actionCreators = {
@@ -40,6 +38,10 @@ const actionCreators = {
         payload: response.problem
       });
     }
+  },
+  logOut: () => (dispatch: Dispatch) => {
+    AuthService.removeAuthData();
+    dispatch({ type: actions.LOGOUT });
   }
 };
 
