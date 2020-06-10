@@ -1,26 +1,14 @@
-import { AuthAction, AuthState } from '@interfaces/auth';
+import { createReducer, completeState, onSetValue, onReadValue, onSuccess } from 'redux-recompose';
 
 import { actions } from './actions';
 
-const initalState: AuthState = {
-  user: null,
-  userLoading: false,
-  userError: null
+const initialStateDescription = { user: null };
+const initialState = completeState(initialStateDescription);
+
+const reducerDescription = {
+  [actions.LOGOUT]: onSetValue(null),
+  [actions.REHYDRATE_AUTH]: onReadValue(),
+  [actions.LOGIN_SUCCESS]: onSuccess()
 };
 
-const authReducer = (state = initalState, action: AuthAction): AuthState => {
-  switch (action.type) {
-    case actions.LOGIN:
-      return { ...state, userLoading: true };
-    case actions.LOGIN_SUCCESS:
-      return { ...state, user: action.payload, userLoading: false, userError: null };
-    case actions.LOGIN_FAILURE:
-      return { ...state, userError: action.payload as string, userLoading: false };
-    case actions.LOGOUT:
-      return { ...state, user: null };
-    default:
-      return state;
-  }
-};
-
-export default authReducer;
+export default createReducer(initialState, reducerDescription);
