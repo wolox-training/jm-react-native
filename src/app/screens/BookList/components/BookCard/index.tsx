@@ -17,7 +17,7 @@ function BookCard({ customStyle, ...book }: Props) {
   const navigation = useNavigation();
   const handlePress = () => navigation.navigate(Routes.BookDetail, { book });
   return (
-    <TouchableOpacity style={{ ...styles.book, ...(customStyle as object) }} onPress={handlePress}>
+    <TouchableOpacity style={[styles.book, customStyle]} onPress={handlePress}>
       <Image source={image ? { uri: image.url } : bookPlaceholderCover} style={styles.bookCover} />
       <View style={styles.bookSummary}>
         <Text numberOfLines={2} style={styles.bookTitle}>
