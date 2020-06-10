@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity, StyleProp, ViewStyle } from 'react-native';
 
 import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
 import Routes from '@constants/routes';
@@ -8,14 +8,16 @@ import { Book } from '@interfaces/book';
 
 import styles from './styles';
 
-interface Props extends Book {}
+interface Props extends Book {
+  customStyle: StyleProp<ViewStyle>;
+}
 
-function BookCard({ ...book }: Props) {
+function BookCard({ customStyle, ...book }: Props) {
   const { title, author, image } = book;
   const navigation = useNavigation();
   const handlePress = () => navigation.navigate(Routes.BookDetail, { book });
   return (
-    <TouchableOpacity style={styles.book} onPress={handlePress}>
+    <TouchableOpacity style={{ ...styles.book, ...(customStyle as object) }} onPress={handlePress}>
       <Image source={image ? { uri: image.url } : bookPlaceholderCover} style={styles.bookCover} />
       <View style={styles.bookSummary}>
         <Text numberOfLines={2} style={styles.bookTitle}>

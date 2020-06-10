@@ -12,7 +12,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: white,
     width: '100%',
-    marginBottom: 12,
     flex: 1
   },
   bookSummary: {

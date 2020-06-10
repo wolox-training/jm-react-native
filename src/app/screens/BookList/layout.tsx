@@ -13,12 +13,15 @@ interface Props {
 
 function BookList({ books }: Props) {
   const keyExtractor = ({ id }: Book) => String(id);
-  const renderBook: ListRenderItem<Book> = ({ item }) => <BookCard {...item} />;
+  const renderBook: ListRenderItem<Book> = ({ item, index }) => (
+    <BookCard customStyle={index !== books!?.length - 1 && styles.bookListItem} {...item} />
+  );
   return (
     <FlatList<Book>
       data={books}
       renderItem={renderBook}
       keyExtractor={keyExtractor}
+      contentContainerStyle={styles.bookListInside}
       style={styles.bookList}
     />
   );
