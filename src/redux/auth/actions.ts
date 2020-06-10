@@ -1,12 +1,7 @@
-import AsyncStorage from '@react-native-community/async-storage';
 import { ApiResponse } from 'apisauce';
-import { Dispatch, AnyAction, Action } from 'redux';
-import { ThunkAction } from 'redux-thunk';
+import { Dispatch } from 'redux';
 
-import api from '@config/api';
-import STORAGE from '@constants/storage';
 import { LoginResponse } from '@interfaces/api';
-import { AppState } from '@interfaces/appState';
 import { UserCredentials, User } from '@interfaces/auth';
 import AuthService from '@services/AuthService';
 import { deserializer } from '@services/utlis';
@@ -17,8 +12,6 @@ export const actions = {
   LOGIN_FAILURE: '@@AUTH/LOGIN_FAILURE',
   LOGOUT: '@@AUTH/LOGOUT'
 } as const;
-
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppState, unknown, Action<string>>;
 
 const actionCreators = {
   loginSuccess: (user: User) => (dispatch: Dispatch) => {
@@ -46,7 +39,7 @@ const actionCreators = {
       });
     }
   },
-  logOut: (): AppThunk => (dispatch: Dispatch) => {
+  logOut: () => (dispatch: Dispatch) => {
     AuthService.removeAuthData();
     dispatch({ type: actions.LOGOUT });
   }
