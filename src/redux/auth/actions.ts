@@ -5,7 +5,7 @@ import { Dispatch } from 'redux';
 import api from '@config/api';
 import STORAGE from '@constants/storage';
 import { LoginResponse } from '@interfaces/api';
-import { UserCredentials, User } from '@interfaces/auth';
+import { UserCredentials, AuthResponseHeaders, User } from '@interfaces/auth';
 import AuthService from '@services/AuthService';
 import { deserializer } from '@services/utlis';
 
@@ -17,8 +17,9 @@ export const actions = {
 } as const;
 
 const actionCreators = {
-  loginSuccess: (user: User) => (dispatch: Dispatch) => {
-    AuthService.setAuthData(user);
+  loginSuccess: (user: User, authHeaders: AuthResponseHeaders) => (dispatch: Dispatch) => {
+    AuthService.saveAuth({ user, authHeaders });
+
     dispatch({
       type: actions.LOGIN_SUCCESS,
       payload: user
@@ -29,12 +30,10 @@ const actionCreators = {
     const response: ApiResponse<LoginResponse, string> = await AuthService.logIn(credentials);
 
     if (response.ok) {
-      const responseHeaders = response.headers as { 'access-token': string };
-      dispatch<any>(
-        actionCreators.loginSuccess(
-          deserializer.serialize({ ...response!.data?.data, token: responseHeaders['access-token'] })
-        )
-      );
+      const { 'access-token': accessToken, client, uid } = response.headers as AuthResponseHeaders;
+      const user = deserializer.serialize(response!.data?.data);
+
+      dispatch<any>(actionCreators.loginSuccess(user, { 'access-token': accessToken, client, uid }));
     } else {
       dispatch({
         type: actions.LOGIN_FAILURE,
@@ -43,7 +42,7 @@ const actionCreators = {
     }
   },
   logOut: () => (dispatch: Dispatch) => {
-    AuthService.removeAuthData();
+    AuthService.cleanUser();
     dispatch({ type: actions.LOGOUT });
   }
 };

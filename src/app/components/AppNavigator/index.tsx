@@ -9,6 +9,7 @@ import TabBarIcon from '@components/TabBarIcon';
 import Wishlist from '@components/Wishlist';
 import { tabNavigatorConfig, stackNavigatorConfig } from '@config/navigation';
 import Routes from '@constants/routes';
+import STORAGE from '@constants/storage';
 import { AppState } from '@interfaces/appState';
 import {
   LibraryNavigatorParams,
@@ -64,9 +65,10 @@ function AuthNavigatorScreen() {
   const currentUser = useSelector((state: AppState) => state.auth.user);
 
   useEffect(() => {
-    AuthService.getAuthData().then(user => {
-      if (user) {
-        dispatch(authActions.loginSuccess(user));
+    AuthService.getAuth().then(auth => {
+      const { [STORAGE.user]: user, [STORAGE.authHeaders]: authHeaders } = auth;
+      if (user && authHeaders) {
+        dispatch(authActions.loginSuccess(user, authHeaders));
       }
       setLoaded(true);
     });

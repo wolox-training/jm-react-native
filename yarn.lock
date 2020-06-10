@@ -6252,6 +6252,11 @@ realpath-native@^1.1.0:
   dependencies:
     util.promisify "^1.0.0"
 
+redux-recompose@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/redux-recompose/-/redux-recompose-2.2.0.tgz#6e9f1414de84493225da26016ef4fec0a7e0b7ad"
+  integrity sha512-Iy0H3lbQm4UL26CyDstqtLulpQmnDEhgxRKJQXTTi8LiuCu2B/hSgiaAq+uixXbj/5vKULFXRYTqCW1UEGDeuA==
+
 redux-thunk@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
