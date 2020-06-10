@@ -3,10 +3,9 @@ import { Image } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import logoutIcon from '@assets/ic_logout.png';
+import Button from '@components/Button';
 import { SQUARE_NARROW } from '@constants/styleHelpers';
 import authActions from '@redux/auth/actions';
-
-import Button from '../Button';
 
 function LogoutButton() {
   const dispatch = useDispatch();
