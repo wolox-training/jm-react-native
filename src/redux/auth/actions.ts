@@ -1,7 +1,8 @@
 import { ApiResponse } from 'apisauce';
 import { Dispatch } from 'redux';
 
-import { LoginResponse } from '@interfaces/api';
+import api from '@config/api';
+import { UserResponse } from '@interfaces/api';
 import { UserCredentials, AuthResponseHeaders, User } from '@interfaces/auth';
 import AuthService from '@services/AuthService';
 import { deserializer } from '@services/utlis';
@@ -14,23 +15,24 @@ export const actions = {
 } as const;
 
 const actionCreators = {
-  loginSuccess: (user: User, authHeaders: AuthResponseHeaders) => (dispatch: Dispatch) => {
-    AuthService.saveAuth({ user, authHeaders });
-
-    dispatch({
-      type: actions.LOGIN_SUCCESS,
-      payload: user
-    });
+  rehydrateAuth: (user: User, authHeaders: AuthResponseHeaders) => (dispatch: Dispatch) => {
+    api.setHeaders(authHeaders);
+    dispatch({ type: actions.LOGIN_SUCCESS, payload: user });
   },
   logIn: (credentials: UserCredentials) => async (dispatch: Dispatch) => {
     dispatch({ type: actions.LOGIN });
-    const response: ApiResponse<LoginResponse, string> = await AuthService.logIn(credentials);
+    const response: UserResponse = await AuthService.logIn(credentials);
 
     if (response.ok) {
       const { 'access-token': accessToken, client, uid } = response.headers as AuthResponseHeaders;
       const user = deserializer.serialize(response!.data?.data);
 
-      dispatch<any>(actionCreators.loginSuccess(user, { 'access-token': accessToken, client, uid }));
+      AuthService.saveAuth({ user, authHeaders: { 'access-token': accessToken, client, uid } });
+
+      dispatch({
+        type: actions.LOGIN_SUCCESS,
+        payload: user
+      });
     } else {
       dispatch({
         type: actions.LOGIN_FAILURE,

@@ -1,12 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import { ApiResponse } from 'apisauce';
 
 import api from '@config/api';
 import STORAGE from '@constants/storage';
-import { LoginResponse } from '@interfaces/api';
+import { UserResponse } from '@interfaces/api';
 import { UserCredentials, AuthResponseHeaders, User } from '@interfaces/auth';
 
-type LoginPromise = Promise<ApiResponse<LoginResponse, string>>;
+type LoginPromise = Promise<UserResponse>;
 type SaveAuthArgs = { user: User; authHeaders: AuthResponseHeaders };
 
 const AuthService = {

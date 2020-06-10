@@ -13,14 +13,14 @@ type BookDetailScreenRoute = RouteProp<LibraryNavigatorParams, Routes.BookDetail
 
 function BookInfo() {
   const route = useRoute<BookDetailScreenRoute>();
-  const { imageUrl, title, author, year, genre } = route.params.book;
+  const { image, title, author, year, genre } = route.params.book;
   return (
     <View style={styles.bookInfo}>
       <View style={styles.bookInfoInside}>
-        <Image source={imageUrl ? { uri: imageUrl } : bookPlaceholderCover} style={styles.bookCover} />
+        <Image source={image ? { uri: image.url } : bookPlaceholderCover} style={styles.bookCover} />
         <View style={styles.bookSummary}>
           <Text numberOfLines={2} style={styles.bookTitle}>
-            {title}
+            {title.trim()}
           </Text>
           <Text style={styles.bookStatus}>Not Available</Text>
           <Text style={styles.bookBasicAttribute}>{author}</Text>

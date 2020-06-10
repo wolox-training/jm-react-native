@@ -11,15 +11,15 @@ import styles from './styles';
 interface Props extends Book {}
 
 function BookCard({ ...book }: Props) {
-  const { title, author, imageUrl } = book;
+  const { title, author, image } = book;
   const navigation = useNavigation();
   const handlePress = () => navigation.navigate(Routes.BookDetail, { book });
   return (
     <TouchableOpacity style={styles.book} onPress={handlePress}>
-      <Image source={imageUrl ? { uri: imageUrl } : bookPlaceholderCover} style={styles.bookCover} />
+      <Image source={image ? { uri: image.url } : bookPlaceholderCover} style={styles.bookCover} />
       <View style={styles.bookSummary}>
         <Text numberOfLines={2} style={styles.bookTitle}>
-          {title}
+          {title.trim()}
         </Text>
         <Text style={styles.bookAuthor}>{author}</Text>
       </View>

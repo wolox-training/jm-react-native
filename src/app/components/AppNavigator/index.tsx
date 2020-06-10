@@ -17,6 +17,7 @@ import {
   AuthNavigatorParams
 } from '@interfaces/navigation';
 import authActions from '@redux/auth/actions';
+import { AUTH_REDUCER } from '@redux/constants';
 import BookDetail from '@screens/BookDetail';
 import BookList from '@screens/BookList';
 import Login from '@screens/Login';
@@ -54,13 +55,13 @@ function DashboardNavigatorScreen() {
 function AuthNavigatorScreen() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-  const currentUser = useSelector((state: AppState) => state.auth.user);
+  const currentUser = useSelector((state: AppState) => state[AUTH_REDUCER].user);
 
   useEffect(() => {
     AuthService.getAuth().then(auth => {
       const { [STORAGE.user]: user, [STORAGE.authHeaders]: authHeaders } = auth;
       if (user && authHeaders) {
-        dispatch(authActions.loginSuccess(user, authHeaders));
+        dispatch(authActions.rehydrateAuth(user, authHeaders));
       }
       setLoaded(true);
     });
