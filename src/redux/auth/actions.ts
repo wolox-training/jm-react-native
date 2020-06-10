@@ -26,12 +26,10 @@ const actionCreators = {
       const { 'access-token': accessToken, client, uid } = response.headers as AuthResponseHeaders;
       const user = deserializer.serialize(response!.data?.data);
 
-      AuthService.saveAuth({ user, authHeaders: { 'access-token': accessToken, client, uid } });
-
-      dispatch({
-        type: actions.LOGIN_SUCCESS,
-        payload: user
-      });
+      AuthService.saveAuth({
+        user,
+        authHeaders: { 'access-token': accessToken, client, uid }
+      }).then(() => dispatch({ type: actions.LOGIN_SUCCESS, payload: user }));
     } else {
       dispatch({
         type: actions.LOGIN_FAILURE,
