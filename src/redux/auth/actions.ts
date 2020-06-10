@@ -1,4 +1,3 @@
-import { ApiResponse } from 'apisauce';
 import { Dispatch } from 'redux';
 
 import api from '@config/api';
