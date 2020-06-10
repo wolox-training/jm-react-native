@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
-import LogoutButton from '@components/LogoutButton';
 import TabBarIcon from '@components/TabBarIcon';
 import Wishlist from '@components/Wishlist';
 import { tabNavigatorConfig, stackNavigatorConfig, libraryScreenConfig } from '@config/navigation';
@@ -17,7 +16,6 @@ import {
   AuthNavigatorParams
 } from '@interfaces/navigation';
 import authActions from '@redux/auth/actions';
-import { AUTH_REDUCER } from '@redux/constants';
 import BookDetail from '@screens/BookDetail';
 import BookList from '@screens/BookList';
 import Login from '@screens/Login';
@@ -55,7 +53,7 @@ function DashboardNavigatorScreen() {
 function AuthNavigatorScreen() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-  const currentUser = useSelector((state: AppState) => state[AUTH_REDUCER].user);
+  const currentUser = useSelector((state: AppState) => state.auth.user);
 
   useEffect(() => {
     AuthService.getAuth().then(auth => {
