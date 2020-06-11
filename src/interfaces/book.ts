@@ -9,7 +9,7 @@ export interface Book {
 }
 
 export interface BooksState {
-  books: Book[] | null;
+  books: Book[];
   booksLoading: boolean;
   booksError: string | null;
   querySearch: string;

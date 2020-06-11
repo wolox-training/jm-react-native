@@ -1,13 +1,20 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
 
-import { white } from '@constants/colors';
+import SearchEmptyFallback from '@components/SearchEmptyFallback';
+import { AppState } from '@interfaces/appState';
+import { Book } from '@interfaces/book';
+import BookList from '@screens/BookList';
 
 function Search() {
+  const querySearch = useSelector((state: AppState) => state.book.querySearch);
+  const bookTitleFilter = (book: Book) => book.title.toLowerCase().startsWith(querySearch.toLowerCase());
+  const emptyQueryFilter = () => false;
   return (
-    <View style={{ flex: 1, backgroundColor: white }}>
-      <Text>No vimo</Text>
-    </View>
+    <BookList
+      booksFilter={querySearch ? bookTitleFilter : emptyQueryFilter}
+      emptyComponent={SearchEmptyFallback}
+    />
   );
 }
 
