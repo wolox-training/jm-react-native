@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { ListRenderItem, FlatList } from 'react-native';
+import React, { useEffect, FC } from 'react';
+import { ListRenderItem, FlatList, FlatListProps } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import withLoading from '@components/WithLoading';
@@ -11,7 +11,7 @@ import BookCard from './components/BookCard';
 import styles from './styles';
 
 function BookListContainer() {
-  const LoadableFlatlist = withLoading(FlatList);
+  const LoadableFlatlist = withLoading(FlatList) as FC<FlatListProps<Book> & { loading: boolean }>;
   const keyExtractor = ({ id }: Book) => String(id);
   const dispatch = useDispatch();
   const { books, booksLoading } = useSelector((state: AppState) => state.book);
@@ -23,7 +23,7 @@ function BookListContainer() {
   }, [dispatch]);
 
   return (
-    <LoadableFlatlist<Book>
+    <LoadableFlatlist
       loading={booksLoading}
       data={books}
       renderItem={renderBook}
