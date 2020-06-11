@@ -6,7 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import TabBarIcon from '@components/TabBarIcon';
 import Wishlist from '@components/Wishlist';
-import { tabNavigatorConfig, stackNavigatorConfig, libraryScreenConfig } from '@config/navigation';
+import {
+  tabNavigatorConfig,
+  stackNavigatorConfig,
+  libraryScreenConfig,
+  searchScreenConfig
+} from '@config/navigation';
 import Routes from '@constants/routes';
 import STORAGE from '@constants/storage';
 import { AppState } from '@interfaces/appState';
@@ -19,6 +24,7 @@ import authActions from '@redux/auth/actions';
 import BookDetail from '@screens/BookDetail';
 import BookList from '@screens/BookList';
 import Login from '@screens/Login';
+import Search from '@screens/Search';
 import { AuthLocalService } from '@services/AuthService';
 
 const LibraryNavigator = createStackNavigator<LibraryNavigatorParams>();
@@ -34,6 +40,7 @@ function LibraryStackScreen() {
         component={BookDetail}
         options={{ title: 'BOOK DETAIL' }}
       />
+      <LibraryNavigator.Screen name={Routes.Search} component={Search} options={searchScreenConfig} />
     </LibraryNavigator.Navigator>
   );
 }

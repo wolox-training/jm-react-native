@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Searchbar from '@app/components/Searchbar';
+import SearchButton from '@app/components/SearchButton';
 import BackButton from '@components/BackButton';
 import HeaderBackground from '@components/HeaderBackground';
 import LogoutButton from '@components/LogoutButton';
@@ -31,5 +33,12 @@ export const tabNavigatorConfig = {
 export const libraryScreenConfig = {
   title: 'LIBRARY',
   headerLeft: () => <LogoutButton />,
-  headerLeftContainerStyle: { paddingLeft: 12 }
+  headerLeftContainerStyle: { paddingLeft: 12 },
+  headerRight: () => <SearchButton />,
+  headerRightContainerStyle: { paddingRight: 12 }
+};
+
+export const searchScreenConfig = {
+  headerLeft: () => null,
+  headerTitle: () => <Searchbar />
 };

@@ -12,4 +12,5 @@ export interface BooksState {
   books: Book[] | null;
   booksLoading: boolean;
   booksError: string | null;
+  querySearch: string;
 }

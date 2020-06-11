@@ -1,6 +1,12 @@
-import { createReducer, completeState } from 'redux-recompose';
+import { createReducer, completeState, onReadValue } from 'redux-recompose';
 
-const initialStateDescription = { books: [] };
-const initialState = completeState(initialStateDescription);
+import { actions } from './actions';
 
-export default createReducer(initialState, {});
+const initialStateDescription = { books: [], querySearch: '' };
+const initialState = completeState(initialStateDescription, ['querySearch']);
+
+const reducerDescription = {
+  [actions.SET_VALUE]: onReadValue()
+};
+
+export default createReducer(initialState, reducerDescription);

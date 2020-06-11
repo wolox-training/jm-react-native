@@ -11,7 +11,8 @@ enum Routes {
   BookDetail = 'BookDetail',
   Wishlist = 'Wishlist',
   Login = 'Login',
-  Dashboard = 'Dashboard'
+  Dashboard = 'Dashboard',
+  Search = 'Search'
 }
 
 type TabBarIcons = {
