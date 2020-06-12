@@ -1,4 +1,4 @@
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { white } from '@constants/colors';
 
@@ -8,24 +8,25 @@ export default StyleSheet.create({
     borderRadius: 100,
     paddingHorizontal: 8,
     paddingVertical: 0,
-    width: '100%',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    width: '100%'
   },
   searchbarLeftIcon: {
     width: 13,
     height: 13,
-    marginRight: 12
+    flexGrow: 1
   },
   searchbarInput: {
-    ...Platform.select({
-      ios: {
-        paddingVertical: 5
-      }
-    }),
-    width: 300,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
     fontSize: 14,
     lineHeight: 16,
-    padding: 0
+    width: 300
+  },
+  clearTextIcon: {
+    width: 15,
+    height: 15,
+    flexGrow: 1
   }
 });

@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, Image, TextInput } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useSelector, useDispatch } from 'react-redux';
 
+import removeIcon from '@assets/ic_remove.png';
 import searchPlaceholderIcon from '@assets/ic_search_placeholder.png';
 import { AppState } from '@interfaces/appState';
 import bookActions from '@redux/books/actions';
@@ -12,6 +14,7 @@ function Searchbar() {
   const dispatch = useDispatch();
   const input = useSelector((state: AppState) => state.book.querySearch);
   const setInput = (textInput: string) => dispatch(bookActions.setValue('querySearch', textInput));
+  const clearInputText = () => setInput('');
 
   return (
     <View style={styles.searchbar}>
@@ -21,8 +24,12 @@ function Searchbar() {
         placeholder="What are you looking for?"
         onChangeText={setInput}
         value={input}
-        clearButtonMode="while-editing"
       />
+      {!!input && (
+        <TouchableOpacity onPress={clearInputText}>
+          <Image style={styles.clearTextIcon} source={removeIcon} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 }

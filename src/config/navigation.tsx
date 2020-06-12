@@ -40,5 +40,8 @@ export const libraryScreenConfig = {
 
 export const searchScreenConfig = {
   headerLeft: () => null,
-  headerTitle: () => <Searchbar />
+  headerTitle: () => <Searchbar />,
+  headerTitleStyle: {
+    width: '100%'
+  }
 };
