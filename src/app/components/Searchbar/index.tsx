@@ -25,11 +25,9 @@ function Searchbar() {
         onChangeText={setInput}
         value={input}
       />
-      {!!input && (
-        <TouchableOpacity onPress={clearInputText}>
-          <Image style={styles.clearTextIcon} source={removeIcon} />
-        </TouchableOpacity>
-      )}
+      <TouchableOpacity onPress={clearInputText}>
+        <Image style={styles.clearTextIcon} source={removeIcon} />
+      </TouchableOpacity>
     </View>
   );
 }
