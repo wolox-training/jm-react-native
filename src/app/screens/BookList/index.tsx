@@ -5,12 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import withLoading from '@components/WithLoading';
 import { AppState } from '@interfaces/appState';
 import { Book } from '@interfaces/book';
-import bookActions from '@redux/books/actions';
+import BookService from '@services/BookService';
 
 import BookCard from './components/BookCard';
 import styles from './styles';
 
-function BookListContainer() {
+function BookList() {
   const LoadableFlatlist = withLoading(FlatList) as FC<FlatListProps<Book> & { loading: boolean }>;
   const keyExtractor = ({ id }: Book) => String(id);
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function BookListContainer() {
     <BookCard customStyle={index !== books!?.length - 1 && styles.bookListItem} {...item} />
   );
   useEffect(() => {
-    dispatch(bookActions.getBooks());
+    dispatch(BookService.getBooks());
   }, [dispatch]);
 
   return (
@@ -33,4 +33,4 @@ function BookListContainer() {
     />
   );
 }
-export default BookListContainer;
+export default BookList;

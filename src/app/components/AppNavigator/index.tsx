@@ -19,7 +19,7 @@ import authActions from '@redux/auth/actions';
 import BookDetail from '@screens/BookDetail';
 import BookList from '@screens/BookList';
 import Login from '@screens/Login';
-import AuthService from '@services/AuthService';
+import { AuthLocalService } from '@services/AuthService';
 
 const LibraryNavigator = createStackNavigator<LibraryNavigatorParams>();
 const TabNavigator = createBottomTabNavigator<DashboardNavigatorParams>();
@@ -56,7 +56,7 @@ function AuthNavigatorScreen() {
   const currentUser = useSelector((state: AppState) => state.auth.user);
 
   useEffect(() => {
-    AuthService.getAuth().then(auth => {
+    AuthLocalService.getAuth().then(auth => {
       const { [STORAGE.user]: user, [STORAGE.authHeaders]: authHeaders } = auth;
       if (user && authHeaders) {
         dispatch(authActions.rehydrateAuth(user, authHeaders));

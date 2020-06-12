@@ -9,7 +9,7 @@ import withLoading from '@components/WithLoading';
 import { FIELD } from '@constants/styleHelpers';
 import { isEmail, isPresent } from '@constants/validations';
 import { AppState } from '@interfaces/appState';
-import authActions from '@redux/auth/actions';
+import AuthService from '@services/AuthService';
 
 import styles from './styles';
 
@@ -19,7 +19,7 @@ function Login() {
   const dispatch = useDispatch();
 
   const formIsValid = isEmail(email) && isPresent(password);
-  const signIn = () => dispatch(authActions.logIn({ email, password }));
+  const signIn = () => dispatch(AuthService.logIn({ email, password }));
 
   return (
     <ImageBackground source={loginBackground} style={styles.loginBackground}>

@@ -21,24 +21,4 @@ export interface User {
   token: string
 }
 
-interface LoginAction {
-  type: typeof authActions.LOGIN;
-}
-
-interface LoginSuccessAction {
-  type: typeof authActions.LOGIN_SUCCESS;
-  payload: User;
-}
-
-interface LoginFailureAction {
-  type: typeof authActions.LOGIN_FAILURE;
-  payload: string;
-}
-
-interface LogoutAction {
-  type: typeof authActions.LOGOUT;
-}
-
-export type AuthAction = LoginAction | LoginSuccessAction | LoginFailureAction | LogoutAction
-
 export type AuthResponseHeaders = { 'access-token': string, client: string, uid: string };
