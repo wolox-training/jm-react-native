@@ -42,5 +42,4 @@ function BookList({ booksFilter, emptyComponent }: Props) {
     />
   );
 }
-
 export default BookList;
