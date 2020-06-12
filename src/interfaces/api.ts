@@ -1,5 +1,8 @@
-import { User } from './auth';
+import { ApiResponse } from 'apisauce';
 
-export type LoginResponse = {
-  data: User;
-};
+import { User } from './auth';
+import { Book } from './book';
+
+export type UserResponse = ApiResponse<{ data: User }, string>;
+
+export type BooksResponse = ApiResponse<Book[], string>;

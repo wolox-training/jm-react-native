@@ -12,7 +12,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: white,
     width: '100%',
-    marginBottom: 12,
     flex: 1
   },
   bookSummary: {
@@ -22,7 +21,7 @@ export default StyleSheet.create({
     marginRight: 12,
     width: 40,
     height: 60,
-    resizeMode: 'contain'
+    resizeMode: 'cover'
   },
   bookTitle: {
     ...MEDIUM_FONT,

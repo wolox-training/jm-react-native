@@ -8,5 +8,4 @@ const api = create({
 });
 
 api.addMonitor(Reactotron.apisauce);
-
 export default api;

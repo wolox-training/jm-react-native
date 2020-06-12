@@ -4,11 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
-import LogoutButton from '@components/LogoutButton';
 import TabBarIcon from '@components/TabBarIcon';
 import Wishlist from '@components/Wishlist';
 import { tabNavigatorConfig, stackNavigatorConfig, libraryScreenConfig } from '@config/navigation';
 import Routes from '@constants/routes';
+import STORAGE from '@constants/storage';
 import { AppState } from '@interfaces/appState';
 import {
   LibraryNavigatorParams,
@@ -56,9 +56,10 @@ function AuthNavigatorScreen() {
   const currentUser = useSelector((state: AppState) => state.auth.user);
 
   useEffect(() => {
-    AuthService.getAuthData().then(user => {
-      if (user) {
-        dispatch(authActions.loginSuccess(user));
+    AuthService.getAuth().then(auth => {
+      const { [STORAGE.user]: user, [STORAGE.authHeaders]: authHeaders } = auth;
+      if (user && authHeaders) {
+        dispatch(authActions.rehydrateAuth(user, authHeaders));
       }
       setLoaded(true);
     });

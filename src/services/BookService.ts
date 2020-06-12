@@ -1,7 +1,10 @@
 import api from '@config/api';
+import { BooksResponse } from '@interfaces/api';
+
+type BooksPromise = Promise<BooksResponse>;
 
 const BookService = {
-  getBookDetail: (id: number) => api.get(`api/v1/books/${id}`)
+  getBooks: (): BooksPromise => api.get('/books')
 };
 
 export default BookService;

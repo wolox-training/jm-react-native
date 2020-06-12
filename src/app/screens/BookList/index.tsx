@@ -1,23 +1,36 @@
-import React from 'react';
-import { FlatList, ListRenderItem } from 'react-native';
+import React, { useEffect, FC } from 'react';
+import { ListRenderItem, FlatList, FlatListProps } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { BOOKS } from '@constants/mockData';
+import withLoading from '@components/WithLoading';
+import { AppState } from '@interfaces/appState';
 import { Book } from '@interfaces/book';
+import bookActions from '@redux/books/actions';
 
 import BookCard from './components/BookCard';
 import styles from './styles';
 
-function BookList() {
+function BookListContainer() {
+  const LoadableFlatlist = withLoading(FlatList) as FC<FlatListProps<Book> & { loading: boolean }>;
   const keyExtractor = ({ id }: Book) => String(id);
-  const renderBook: ListRenderItem<Book> = ({ item }) => <BookCard {...item} />;
+  const dispatch = useDispatch();
+  const { books, booksLoading } = useSelector((state: AppState) => state.book);
+  const renderBook: ListRenderItem<Book> = ({ item, index }) => (
+    <BookCard customStyle={index !== books!?.length - 1 && styles.bookListItem} {...item} />
+  );
+  useEffect(() => {
+    dispatch(bookActions.getBooks());
+  }, [dispatch]);
+
   return (
-    <FlatList<Book>
-      data={BOOKS}
+    <LoadableFlatlist
+      loading={booksLoading}
+      data={books}
       renderItem={renderBook}
       keyExtractor={keyExtractor}
+      contentContainerStyle={styles.bookListInside}
       style={styles.bookList}
     />
   );
 }
-
-export default BookList;
+export default BookListContainer;

@@ -41,4 +41,4 @@ interface LogoutAction {
 
 export type AuthAction = LoginAction | LoginSuccessAction | LoginFailureAction | LogoutAction
 
-export type AuthResponseHeaders = { [key: string]: string };
+export type AuthResponseHeaders = { 'access-token': string, client: string, uid: string };

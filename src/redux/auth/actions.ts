@@ -1,8 +1,8 @@
-import { ApiResponse } from 'apisauce';
 import { Dispatch } from 'redux';
 
-import { LoginResponse } from '@interfaces/api';
-import { UserCredentials, User } from '@interfaces/auth';
+import api from '@config/api';
+import { UserResponse } from '@interfaces/api';
+import { UserCredentials, AuthResponseHeaders, User } from '@interfaces/auth';
 import AuthService from '@services/AuthService';
 import { deserializer } from '@services/utlis';
 
@@ -14,24 +14,22 @@ export const actions = {
 } as const;
 
 const actionCreators = {
-  loginSuccess: (user: User) => (dispatch: Dispatch) => {
-    AuthService.setAuthData(user);
-    dispatch({
-      type: actions.LOGIN_SUCCESS,
-      payload: user
-    });
+  rehydrateAuth: (user: User, authHeaders: AuthResponseHeaders) => (dispatch: Dispatch) => {
+    api.setHeaders(authHeaders);
+    dispatch({ type: actions.LOGIN_SUCCESS, payload: user });
   },
   logIn: (credentials: UserCredentials) => async (dispatch: Dispatch) => {
     dispatch({ type: actions.LOGIN });
-    const response: ApiResponse<LoginResponse, string> = await AuthService.logIn(credentials);
+    const response: UserResponse = await AuthService.logIn(credentials);
 
     if (response.ok) {
-      const responseHeaders = response.headers as { 'access-token': string };
-      dispatch<any>(
-        actionCreators.loginSuccess(
-          deserializer.serialize({ ...response!.data?.data, token: responseHeaders['access-token'] })
-        )
-      );
+      const { 'access-token': accessToken, client, uid } = response.headers as AuthResponseHeaders;
+      const user = deserializer.serialize(response!.data?.data);
+
+      AuthService.saveAuth({
+        user,
+        authHeaders: { 'access-token': accessToken, client, uid }
+      }).then(() => dispatch({ type: actions.LOGIN_SUCCESS, payload: user }));
     } else {
       dispatch({
         type: actions.LOGIN_FAILURE,
@@ -40,7 +38,7 @@ const actionCreators = {
     }
   },
   logOut: () => (dispatch: Dispatch) => {
-    AuthService.removeAuthData();
+    AuthService.cleanUser();
     dispatch({ type: actions.LOGOUT });
   }
 };

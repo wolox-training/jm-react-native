@@ -1,5 +1,6 @@
 const STORAGE = {
-  user: '@user'
+  user: '@user',
+  authHeaders: '@authHeaders'
 } as const;
 
 export default STORAGE;
