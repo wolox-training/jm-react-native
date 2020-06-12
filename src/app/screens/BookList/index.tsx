@@ -11,7 +11,7 @@ import BookCard from './components/BookCard';
 import styles from './styles';
 
 interface Props {
-  booksFilter?: (value: Book, index: number, array: Book[]) => boolean;
+  booksFilter?: (books: Book[]) => Book[];
   emptyComponent?: FC;
 }
 
@@ -33,7 +33,7 @@ function BookList({ booksFilter, emptyComponent }: Props) {
   return (
     <LoadableFlatlist
       loading={booksLoading}
-      data={booksFilter ? books.filter(booksFilter) : books}
+      data={booksFilter ? booksFilter(books) : books}
       renderItem={renderBook}
       keyExtractor={keyExtractor}
       contentContainerStyle={styles.bookListInside}
