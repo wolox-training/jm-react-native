@@ -3,7 +3,7 @@ import { createTypes, completeTypes } from 'redux-recompose';
 
 import api from '@config/api';
 import { User, AuthResponseHeaders } from '@interfaces/auth';
-import { AuthLocalService } from '@services/AuthService';
+import AuthLocalService from '@services/AuthLocalService';
 
 const serviceTypes = ['LOGIN'];
 
