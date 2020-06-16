@@ -1,11 +1,12 @@
 import { useRoute, RouteProp } from '@react-navigation/native';
 import React, { useRef, useState } from 'react';
-import { Text, View, Image, Animated, TouchableOpacity, LayoutChangeEvent } from 'react-native';
+import { Text, View, Image, Animated, TouchableOpacity } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
 import rentedIcond from '@assets/ic_check.png';
 import Button from '@components/Button';
-import { lightGray, green } from '@constants/colors';
+import { green, transparent } from '@constants/colors';
 import Routes from '@constants/routes';
 import { LibraryNavigatorParams } from '@interfaces/navigation';
 
@@ -28,12 +29,12 @@ function BookInfo() {
     Animated.parallel([
       Animated.timing(rentBtnBackground, {
         toValue: 1,
-        duration: 750,
+        duration: 250,
         useNativeDriver: false
       }),
       Animated.timing(rentBtnBorderRadius, {
         toValue: BUTTON_HEIGHT / 2,
-        duration: 1500,
+        duration: 1000,
         useNativeDriver: false
       }),
       Animated.spring(rentBtnWidth, {
@@ -50,7 +51,7 @@ function BookInfo() {
   const rentButtonAnimatedStyle = {
     backgroundColor: rentBtnBackground.interpolate({
       inputRange: [0, 1],
-      outputRange: [lightGray, green]
+      outputRange: [transparent, green]
     }),
     borderRadius: rentBtnBorderRadius,
     width: rentBtnWidth
@@ -74,16 +75,22 @@ function BookInfo() {
         <Button buttonStyle={styles.watchlistButton} buttonTextStyle={styles.watchlistButtonText}>
           ADD TO WATCHLIST
         </Button>
-        <AnimatedTouchableOpacity
-          activeOpacity={1}
-          style={[styles.rentButton, rentButtonAnimatedStyle]}
-          onPress={handleRent}>
-          {bookRented ? (
-            <Image style={styles.rentedIcond} source={rentedIcond} />
-          ) : (
-            <Text style={styles.rentButtonText}>RENT</Text>
-          )}
-        </AnimatedTouchableOpacity>
+        <LinearGradient
+          style={styles.rentButtonWrapper}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={['#00ADEC', '#39CCCD']}>
+          <AnimatedTouchableOpacity
+            activeOpacity={1}
+            style={[styles.rentButton, rentButtonAnimatedStyle]}
+            onPress={handleRent}>
+            {bookRented ? (
+              <Image style={styles.rentedIcond} source={rentedIcond} />
+            ) : (
+              <Text style={styles.rentButtonText}>RENT</Text>
+            )}
+          </AnimatedTouchableOpacity>
+        </LinearGradient>
       </View>
     </View>
   );
