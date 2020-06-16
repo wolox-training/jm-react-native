@@ -14,7 +14,7 @@ interface Props {
   emptyComponent?: FC;
 }
 
-function BookList({ books, emptyComponent }: Props) {
+function BookList({ books, EmptyComponent }: Props) {
   const booksLoading = useSelector((state: AppState) => state.book.booksLoading);
   const LoadableFlatlist = withLoading(FlatList) as FC<FlatListProps<Book> & { loading: boolean }>;
   const keyExtractor = ({ id }: Book) => String(id);
