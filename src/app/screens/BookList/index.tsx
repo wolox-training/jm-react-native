@@ -12,7 +12,7 @@ import styles from './styles';
 
 interface Props {
   booksFilter?: (books: Book[]) => Book[];
-  emptyComponent?: FC;
+  EmptyComponent?: FC;
 }
 
 function BookList({ booksFilter, emptyComponent }: Props) {
