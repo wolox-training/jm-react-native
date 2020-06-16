@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
+import BookList from '@components/BookList';
 import TabBarIcon from '@components/TabBarIcon';
 import Wishlist from '@components/Wishlist';
 import {
@@ -22,7 +23,6 @@ import {
 } from '@interfaces/navigation';
 import authActions from '@redux/auth/actions';
 import BookDetail from '@screens/BookDetail';
-import BookList from '@screens/BookList';
 import Login from '@screens/Login';
 import Search from '@screens/Search';
 import { AuthLocalService } from '@services/AuthService';

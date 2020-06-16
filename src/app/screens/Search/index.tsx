@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import BookList from '@components/BookList';
 import SearchEmptyFallback from '@components/SearchEmptyFallback';
 import { AppState } from '@interfaces/appState';
 import { Book } from '@interfaces/book';
-import BookList from '@screens/BookList';
 
 import { emptyQueryFilter, titleAscSorter } from './utils';
 
