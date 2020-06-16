@@ -12,7 +12,7 @@ function Search() {
   const books = useSelector((state: AppState) => state.book.books);
   const filteredBooks = books.filter(bookTitleFilter(querySearch)).sort(titleAscSorter);
 
-  return <BookList books={filteredBooks} emptyComponent={SearchEmptyFallback} />;
+  return <BookList books={filteredBooks} EmptyComponent={SearchEmptyFallback} />;
 }
 
 export default Search;

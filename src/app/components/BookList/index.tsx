@@ -11,7 +11,7 @@ import styles from './styles';
 
 interface Props {
   books: Book[];
-  emptyComponent?: FC;
+  EmptyComponent?: FC;
 }
 
 function BookList({ books, EmptyComponent }: Props) {
@@ -29,7 +29,7 @@ function BookList({ books, EmptyComponent }: Props) {
       renderItem={renderBook}
       keyExtractor={keyExtractor}
       contentContainerStyle={styles.bookListInside}
-      ListEmptyComponent={emptyComponent}
+      ListEmptyComponent={EmptyComponent}
       style={styles.bookList}
     />
   );
