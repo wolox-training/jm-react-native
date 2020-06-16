@@ -4,20 +4,15 @@ import { useSelector } from 'react-redux';
 import BookList from '@components/BookList';
 import SearchEmptyFallback from '@components/SearchEmptyFallback';
 import { AppState } from '@interfaces/appState';
-import { Book } from '@interfaces/book';
 
-import { emptyQueryFilter, titleAscSorter } from './utils';
+import { titleAscSorter, bookTitleFilter } from './utils';
 
 function Search() {
   const querySearch = useSelector((state: AppState) => state.book.querySearch);
-  const bookTitleFilter = (book: Book) => book.title.toLowerCase().startsWith(querySearch.toLowerCase());
-  const getFoundBooks = (books: Book[]) => books.filter(bookTitleFilter).sort(titleAscSorter);
-  return (
-    <BookList
-      booksFilter={querySearch ? getFoundBooks : emptyQueryFilter}
-      emptyComponent={SearchEmptyFallback}
-    />
-  );
+  const books = useSelector((state: AppState) => state.book.books);
+  const filteredBooks = books.filter(bookTitleFilter(querySearch)).sort(titleAscSorter);
+
+  return <BookList books={filteredBooks} emptyComponent={SearchEmptyFallback} />;
 }
 
 export default Search;

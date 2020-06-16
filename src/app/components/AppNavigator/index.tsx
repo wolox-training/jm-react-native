@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
+import Library from '@app/screens/Library';
 import BookList from '@components/BookList';
 import TabBarIcon from '@components/TabBarIcon';
 import Wishlist from '@components/Wishlist';
@@ -34,7 +35,7 @@ const AuthNavigator = createStackNavigator<AuthNavigatorParams>();
 function LibraryStackScreen() {
   return (
     <LibraryNavigator.Navigator initialRouteName={Routes.BookList} screenOptions={stackNavigatorConfig}>
-      <LibraryNavigator.Screen name={Routes.BookList} component={BookList} options={libraryScreenConfig} />
+      <LibraryNavigator.Screen name={Routes.BookList} component={Library} options={libraryScreenConfig} />
       <LibraryNavigator.Screen
         name={Routes.BookDetail}
         component={BookDetail}

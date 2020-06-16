@@ -11,4 +11,5 @@ export const titleAscSorter = (x: Book, y: Book) => {
   return 0;
 };
 
-export const emptyQueryFilter = () => [];
+export const bookTitleFilter = (querySearch: string) => (book: Book) =>
+  book.title.toLowerCase().startsWith(querySearch.toLowerCase());
