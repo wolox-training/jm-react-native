@@ -11,10 +11,10 @@ import styles from './styles';
 
 interface Props {
   books: Book[];
-  emptyComponent?: FC;
+  EmptyComponent?: FC;
 }
 
-function BookList({ books, emptyComponent }: Props) {
+function BookList({ books, EmptyComponent }: Props) {
   const booksLoading = useSelector((state: AppState) => state.book.booksLoading);
   const LoadableFlatlist = withLoading(FlatList) as FC<FlatListProps<Book> & { loading: boolean }>;
   const keyExtractor = ({ id }: Book) => String(id);
@@ -29,7 +29,7 @@ function BookList({ books, emptyComponent }: Props) {
       renderItem={renderBook}
       keyExtractor={keyExtractor}
       contentContainerStyle={styles.bookListInside}
-      ListEmptyComponent={emptyComponent}
+      ListEmptyComponent={EmptyComponent}
       style={styles.bookList}
     />
   );

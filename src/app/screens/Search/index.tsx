@@ -8,7 +8,7 @@ import { getFilteredBooks } from './selectors';
 
 function Search() {
   const filteredBooks = useSelector(getFilteredBooks);
-  return <BookList books={filteredBooks} emptyComponent={SearchEmptyFallback} />;
+  return <BookList books={filteredBooks} EmptyComponent={SearchEmptyFallback} />;
 }
 
 export default Search;
