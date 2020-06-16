@@ -5,6 +5,7 @@ import { Book } from './book';
 export type LibraryNavigatorParams = {
   [Routes.BookList]: undefined;
   [Routes.BookDetail]: { book: Book };
+  [Routes.Search]: undefined;
 };
 
 export type DashboardNavigatorParams = {
