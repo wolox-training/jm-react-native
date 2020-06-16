@@ -26,7 +26,7 @@ import authActions from '@redux/auth/actions';
 import BookDetail from '@screens/BookDetail';
 import Login from '@screens/Login';
 import Search from '@screens/Search';
-import { AuthLocalService } from '@services/AuthService';
+import AuthLocalService from '@services/AuthLocalService';
 
 const LibraryNavigator = createStackNavigator<LibraryNavigatorParams>();
 const TabNavigator = createBottomTabNavigator<DashboardNavigatorParams>();
