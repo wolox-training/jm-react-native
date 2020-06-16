@@ -3,6 +3,10 @@ import { StyleSheet } from 'react-native';
 import { white, gray, blue, lightGray, red } from '@constants/colors';
 import { SHADOW, MEDIUM_FONT, ROUNDED_BUTTON } from '@constants/styleHelpers';
 
+export const RENT_BORDER_RADIUS = 100;
+export const BUTTON_HEIGHT = 44;
+export const BUTTON_WIDTH = 275;
+
 export default StyleSheet.create({
   bookInfo: {
     ...SHADOW,
@@ -42,13 +46,16 @@ export default StyleSheet.create({
     textTransform: 'capitalize'
   },
   bookDetailActions: {
-    width: '100%'
+    width: '100%',
+    alignItems: 'center'
   },
   watchlistButton: {
     ...ROUNDED_BUTTON,
     borderColor: blue,
     marginBottom: 10,
-    padding: 12
+    width: BUTTON_WIDTH,
+    height: BUTTON_HEIGHT,
+    justifyContent: 'center'
   },
   watchlistButtonText: {
     fontSize: 16,
@@ -57,14 +64,21 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
   rentButton: {
-    borderRadius: 100,
-    backgroundColor: lightGray
+    borderRadius: RENT_BORDER_RADIUS,
+    backgroundColor: lightGray,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: BUTTON_WIDTH,
+    height: BUTTON_HEIGHT
   },
   rentButtonText: {
     color: white,
-    padding: 12,
     fontWeight: '800',
     fontSize: 16,
     textAlign: 'center'
+  },
+  rentedIcond: {
+    width: 20,
+    height: 20
   }
 });
