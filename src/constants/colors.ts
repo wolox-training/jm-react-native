@@ -7,3 +7,4 @@ export const blue = '#00ADEE';
 export const lightBlue = '#EAF6FA';
 export const red = '#D0021B';
 export const black2 = '#030303';
+export const blackTransparent70 = 'rgba(0, 0, 0, 0.7)';
