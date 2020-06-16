@@ -12,9 +12,9 @@ import styles from './styles';
 
 function Searchbar() {
   const dispatch = useDispatch();
-  const input = useSelector((state: AppState) => state.book.querySearch);
-  const setInput = (textInput: string) => dispatch(bookActions.setValue('querySearch', textInput));
-  const clearInputText = () => setInput('');
+  const query = useSelector((state: AppState) => state.book.querySearch);
+  const setQuery = (textInput: string) => dispatch(bookActions.setQuerySearch(textInput));
+  const clearInputText = () => setQuery('');
 
   return (
     <View style={styles.searchbar}>
@@ -22,8 +22,8 @@ function Searchbar() {
       <TextInput
         style={styles.searchbarInput}
         placeholder="What are you looking for?"
-        onChangeText={setInput}
-        value={input}
+        onChangeText={setQuery}
+        value={query}
       />
       <TouchableOpacity onPress={clearInputText}>
         <Image style={styles.clearTextIcon} source={removeIcon} />

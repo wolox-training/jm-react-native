@@ -1,11 +1,11 @@
 import { createTypes } from 'redux-recompose';
 
-export const actions = createTypes(['SET_VALUE'], '@@BOOKS');
+export const actions = createTypes(['SET_QUERY_SEARCH'], '@@BOOKS');
 
 const actionCreators = {
-  setValue: (target: string, value: any) => ({
-    type: actions.SET_VALUE,
-    target,
+  setQuerySearch: (value: any) => ({
+    type: actions.SET_QUERY_SEARCH,
+    target: 'querySearch',
     payload: value
   })
 };

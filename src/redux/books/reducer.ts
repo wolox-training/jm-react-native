@@ -6,7 +6,7 @@ const initialStateDescription = { books: [], querySearch: '' };
 const initialState = completeState(initialStateDescription, ['querySearch']);
 
 const reducerDescription = {
-  [actions.SET_VALUE]: onReadValue()
+  [actions.SET_QUERY_SEARCH]: onReadValue()
 };
 
 export default createReducer(initialState, reducerDescription);
