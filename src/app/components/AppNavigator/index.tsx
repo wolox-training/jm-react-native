@@ -4,8 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Library from '@app/screens/Library';
-import BookList from '@components/BookList';
 import TabBarIcon from '@components/TabBarIcon';
 import Wishlist from '@components/Wishlist';
 import {
@@ -24,6 +22,8 @@ import {
 } from '@interfaces/navigation';
 import authActions from '@redux/auth/actions';
 import BookDetail from '@screens/BookDetail';
+import FreeScreen from '@screens/FreeScreen';
+import Library from '@screens/Library';
 import Login from '@screens/Login';
 import Search from '@screens/Search';
 import AuthLocalService from '@services/AuthLocalService';
@@ -54,6 +54,7 @@ function DashboardNavigatorScreen() {
       tabBarOptions={tabNavigatorConfig}>
       <TabNavigator.Screen name={Routes.Library} component={LibraryStackScreen} />
       <TabNavigator.Screen name={Routes.Wishlist} component={Wishlist} />
+      <TabNavigator.Screen name={Routes.Free} component={FreeScreen} />
     </TabNavigator.Navigator>
   );
 }

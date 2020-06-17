@@ -1,6 +1,6 @@
 import { useRoute, RouteProp } from '@react-navigation/native';
 import React, { useRef, useState } from 'react';
-import { Text, View, Image, Animated, TouchableOpacity, LayoutChangeEvent } from 'react-native';
+import { Text, View, Image, Animated, TouchableOpacity } from 'react-native';
 
 import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
 import rentedIcond from '@assets/ic_check.png';
