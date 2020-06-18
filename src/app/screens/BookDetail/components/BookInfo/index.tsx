@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
 import rentedIcond from '@assets/ic_check.png';
 import Button from '@components/Button';
-import { green, transparent } from '@constants/colors';
+import { green, transparent, blueAndGreenGrandient } from '@constants/colors';
 import Routes from '@constants/routes';
 import { LibraryNavigatorParams } from '@interfaces/navigation';
 
@@ -78,8 +78,7 @@ function BookInfo() {
         <LinearGradient
           style={styles.rentButtonWrapper}
           start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          colors={['#00ADEC', '#39CCCD']}>
+          colors={blueAndGreenGrandient}>
           <AnimatedTouchableOpacity
             activeOpacity={1}
             style={[styles.rentButton, rentButtonAnimatedStyle]}

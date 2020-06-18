@@ -10,3 +10,4 @@ export const lightBlue = '#EAF6FA';
 export const red = '#D0021B';
 export const green = '#34C759';
 export const transparent = 'transparent';
+export const blueAndGreenGrandient = ['#00ADEC', '#39CCCD'];
