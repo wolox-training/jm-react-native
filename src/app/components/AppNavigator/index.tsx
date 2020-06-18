@@ -4,9 +4,16 @@ import React, { useState, useEffect } from 'react';
 import { Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
+import Library from '@app/screens/Library';
+import BookList from '@components/BookList';
 import TabBarIcon from '@components/TabBarIcon';
 import Wishlist from '@components/Wishlist';
-import { tabNavigatorConfig, stackNavigatorConfig, libraryScreenConfig } from '@config/navigation';
+import {
+  tabNavigatorConfig,
+  stackNavigatorConfig,
+  libraryScreenConfig,
+  searchScreenConfig
+} from '@config/navigation';
 import Routes from '@constants/routes';
 import STORAGE from '@constants/storage';
 import { AppState } from '@interfaces/appState';
@@ -17,9 +24,9 @@ import {
 } from '@interfaces/navigation';
 import authActions from '@redux/auth/actions';
 import BookDetail from '@screens/BookDetail';
-import BookList from '@screens/BookList';
 import Login from '@screens/Login';
-import { AuthLocalService } from '@services/AuthService';
+import Search from '@screens/Search';
+import AuthLocalService from '@services/AuthLocalService';
 
 const LibraryNavigator = createStackNavigator<LibraryNavigatorParams>();
 const TabNavigator = createBottomTabNavigator<DashboardNavigatorParams>();
@@ -28,12 +35,13 @@ const AuthNavigator = createStackNavigator<AuthNavigatorParams>();
 function LibraryStackScreen() {
   return (
     <LibraryNavigator.Navigator initialRouteName={Routes.BookList} screenOptions={stackNavigatorConfig}>
-      <LibraryNavigator.Screen name={Routes.BookList} component={BookList} options={libraryScreenConfig} />
+      <LibraryNavigator.Screen name={Routes.BookList} component={Library} options={libraryScreenConfig} />
       <LibraryNavigator.Screen
         name={Routes.BookDetail}
         component={BookDetail}
         options={{ title: 'BOOK DETAIL' }}
       />
+      <LibraryNavigator.Screen name={Routes.Search} component={Search} options={searchScreenConfig} />
     </LibraryNavigator.Navigator>
   );
 }

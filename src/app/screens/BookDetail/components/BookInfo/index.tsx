@@ -1,19 +1,61 @@
 import { useRoute, RouteProp } from '@react-navigation/native';
-import React from 'react';
-import { Text, View, Image } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { Text, View, Image, Animated, TouchableOpacity, LayoutChangeEvent } from 'react-native';
 
 import bookPlaceholderCover from '@assets/book_placeholder_cover.png';
+import rentedIcond from '@assets/ic_check.png';
 import Button from '@components/Button';
+import { lightGray, green } from '@constants/colors';
 import Routes from '@constants/routes';
 import { LibraryNavigatorParams } from '@interfaces/navigation';
 
-import styles from './styles';
+import styles, { RENT_BORDER_RADIUS, BUTTON_HEIGHT, BUTTON_WIDTH } from './styles';
 
 type BookDetailScreenRoute = RouteProp<LibraryNavigatorParams, Routes.BookDetail>;
+
+const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
 function BookInfo() {
   const route = useRoute<BookDetailScreenRoute>();
   const { image, title, author, year, genre } = route.params.book;
+  const [bookRented, setBookRented] = useState(false);
+
+  const rentBtnWidth = useRef(new Animated.Value(BUTTON_WIDTH)).current;
+  const rentBtnBackground = useRef(new Animated.Value(0)).current;
+  const rentBtnBorderRadius = useRef(new Animated.Value(RENT_BORDER_RADIUS)).current;
+
+  const handleRent = () => {
+    Animated.parallel([
+      Animated.timing(rentBtnBackground, {
+        toValue: 1,
+        duration: 750,
+        useNativeDriver: false
+      }),
+      Animated.timing(rentBtnBorderRadius, {
+        toValue: BUTTON_HEIGHT / 2,
+        duration: 1500,
+        useNativeDriver: false
+      }),
+      Animated.spring(rentBtnWidth, {
+        toValue: BUTTON_HEIGHT,
+        speed: 10,
+        bounciness: 5,
+        useNativeDriver: false
+      })
+    ]).start();
+
+    setBookRented(true);
+  };
+
+  const rentButtonAnimatedStyle = {
+    backgroundColor: rentBtnBackground.interpolate({
+      inputRange: [0, 1],
+      outputRange: [lightGray, green]
+    }),
+    borderRadius: rentBtnBorderRadius,
+    width: rentBtnWidth
+  };
+
   return (
     <View style={styles.bookInfo}>
       <View style={styles.bookInfoInside}>
@@ -32,9 +74,16 @@ function BookInfo() {
         <Button buttonStyle={styles.watchlistButton} buttonTextStyle={styles.watchlistButtonText}>
           ADD TO WATCHLIST
         </Button>
-        <Button buttonStyle={styles.rentButton} buttonTextStyle={styles.rentButtonText}>
-          RENT
-        </Button>
+        <AnimatedTouchableOpacity
+          activeOpacity={1}
+          style={[styles.rentButton, rentButtonAnimatedStyle]}
+          onPress={handleRent}>
+          {bookRented ? (
+            <Image style={styles.rentedIcond} source={rentedIcond} />
+          ) : (
+            <Text style={styles.rentButtonText}>RENT</Text>
+          )}
+        </AnimatedTouchableOpacity>
       </View>
     </View>
   );
