@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native';
 
 import { white } from '@constants/colors';
 
+const ANIMATION_SIZE = 250;
+
 export default StyleSheet.create({
   container: {
     flex: 1
@@ -13,8 +15,8 @@ export default StyleSheet.create({
     height: '100%'
   },
   animation: {
-    width: 250,
-    height: 250
+    width: ANIMATION_SIZE,
+    height: ANIMATION_SIZE
   },
   title: {
     fontWeight: 'bold',
