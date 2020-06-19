@@ -11,6 +11,7 @@ export type LibraryNavigatorParams = {
 export type DashboardNavigatorParams = {
   [Routes.Library]: undefined;
   [Routes.Wishlist]: undefined;
+  [Routes.Free]: undefined;
 };
 
 export type AuthNavigatorParams = {
