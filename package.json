@@ -23,6 +23,8 @@
     "@types/react-redux": "^7.1.9",
     "apisauce": "^1.1.1",
     "cerealizr": "^1.0.1-alpha",
+    "lottie-ios": "3.1.3",
+    "lottie-react-native": "^3.4.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-config": "^1.2.0",
