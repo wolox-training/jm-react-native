@@ -8,4 +8,5 @@ export const white = '#FFF';
 export const blue = '#00ADEE';
 export const lightBlue = '#EAF6FA';
 export const red = '#D0021B';
+export const blackTransparent70 = 'rgba(0, 0, 0, 0.7)';
 export const green = '#34C759';

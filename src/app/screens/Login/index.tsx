@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { ImageBackground, Image, TextInput } from 'react-native';
+import { ImageBackground, Image, TextInput, StatusBar } from 'react-native';
 import { useDispatch, connect } from 'react-redux';
 
 import loginBackground from '@assets/bc_inicio.png';
 import appLogo from '@assets/wbooks_logo.png';
 import Button from '@components/Button';
 import withLoading from '@components/WithLoading';
+import { black } from '@constants/colors';
 import { FIELD } from '@constants/styleHelpers';
 import { isEmail, isPresent } from '@constants/validations';
 import { AppState } from '@interfaces/appState';
@@ -23,6 +24,7 @@ function Login() {
 
   return (
     <ImageBackground source={loginBackground} style={styles.loginBackground}>
+      <StatusBar barStyle="light-content" backgroundColor={black} />
       <Image source={appLogo} style={styles.logo} />
       <TextInput
         style={styles.emailField}
