@@ -63,9 +63,10 @@ export default StyleSheet.create({
     color: blue,
     textAlign: 'center'
   },
+  rentButtonWrapper: {
+    borderRadius: RENT_BORDER_RADIUS
+  },
   rentButton: {
-    borderRadius: RENT_BORDER_RADIUS,
-    backgroundColor: lightGray,
     alignItems: 'center',
     justifyContent: 'center',
     width: BUTTON_WIDTH,
