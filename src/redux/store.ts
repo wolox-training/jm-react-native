@@ -14,9 +14,12 @@ const rootReducer = combineReducers({
   book
 });
 
-const store = createStore(
-  rootReducer,
-  compose(applyMiddleware(thunk, fetchMiddleware), Reactotron.createEnhancer())
-);
+const enhancers = [applyMiddleware(thunk, fetchMiddleware)];
+
+if (__DEV__) {
+  enhancers.push(Reactotron.createEnhancer());
+}
+
+const store = createStore(rootReducer, compose(...enhancers));
 
 export default store;
